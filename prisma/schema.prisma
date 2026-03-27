@@ -1,0 +1,158 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ── NextAuth tables ──
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String    @unique
+  emailVerified DateTime?
+  image         String?
+  createdAt     DateTime  @default(now())
+  accounts      Account[]
+  sessions      Session[]
+
+  taskCompletions TaskCompletion[]
+  dailyActivities DailyActivity[]
+  moodEntries     MoodEntry[]
+  budgetItems     BudgetItem[]
+  deadlines       Deadline[]
+  studySessions   StudySession[]
+  subTasks        SubTask[]
+  quickCaptures   QuickCapture[]
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+// ── App tables ──
+
+model TaskCompletion {
+  id          String   @id @default(cuid())
+  userId      String
+  taskId      String
+  xpEarned    Int
+  note        String?  @db.Text
+  completedAt DateTime @default(now())
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, taskId])
+}
+
+model DailyActivity {
+  id        String   @id @default(cuid())
+  userId    String
+  date      String
+  count     Int      @default(0)
+  xpEarned  Int      @default(0)
+  taskNames String[]
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, date])
+}
+
+model MoodEntry {
+  id         String   @id @default(cuid())
+  userId     String
+  date       String
+  moodLevel  Int
+  recordedAt DateTime @default(now())
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, date])
+}
+
+model BudgetItem {
+  id       String    @id @default(cuid())
+  userId   String
+  itemKey  String
+  paid     Boolean   @default(false)
+  paidAt   DateTime?
+  user     User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, itemKey])
+}
+
+model Deadline {
+  id         String   @id @default(cuid())
+  userId     String
+  name       String
+  targetDate String?
+  isFixed    Boolean  @default(false)
+  createdAt  DateTime @default(now())
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// ── Wave 1: Foundations ──
+
+model StudySession {
+  id            String    @id @default(cuid())
+  userId        String
+  taskId        String?
+  startedAt     DateTime  @default(now())
+  endedAt       DateTime?
+  durationMin   Int?
+  pauseCount    Int       @default(0)
+  totalPauseMin Int       @default(0)
+  user          User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model SubTask {
+  id          String    @id @default(cuid())
+  userId      String
+  taskId      String
+  name        String
+  sortOrder   Int       @default(0)
+  completed   Boolean   @default(false)
+  completedAt DateTime?
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, taskId, name])
+}
+
+model QuickCapture {
+  id        String   @id @default(cuid())
+  userId    String
+  content   String   @db.Text
+  createdAt DateTime @default(now())
+  archived  Boolean  @default(false)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
