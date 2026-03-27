@@ -54,18 +54,23 @@ export async function GET(
   const { date } = await params;
   const userId = session.user.id;
 
-  let entry = await prisma.journalEntry.findUnique({
-    where: { userId_date: { userId, date } },
-  });
-
-  if (!entry) {
-    const autoData = await generateAutoData(userId, date);
-    entry = await prisma.journalEntry.create({
-      data: { userId, date, autoData },
+  try {
+    let entry = await prisma.journalEntry.findUnique({
+      where: { userId_date: { userId, date } },
     });
-  }
 
-  return Response.json(entry);
+    if (!entry) {
+      const autoData = await generateAutoData(userId, date);
+      entry = await prisma.journalEntry.create({
+        data: { userId, date, autoData },
+      });
+    }
+
+    return Response.json(entry);
+  } catch (err) {
+    console.error("Journal GET error:", err);
+    return Response.json({ error: "Failed to load journal entry" }, { status: 500 });
+  }
 }
 
 export async function PATCH(

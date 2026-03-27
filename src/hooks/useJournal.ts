@@ -46,9 +46,14 @@ export function useJournal(limit = 14) {
     mutate();
   };
 
-  const getEntry = async (date: string): Promise<JournalEntry> => {
-    const res = await fetch(`/api/journal/${date}`);
-    return res.json();
+  const getEntry = async (date: string): Promise<JournalEntry | null> => {
+    try {
+      const res = await fetch(`/api/journal/${date}`);
+      if (!res.ok) return null;
+      return await res.json();
+    } catch {
+      return null;
+    }
   };
 
   return { entries, updateNotes, getEntry, isLoading, refresh: mutate };
