@@ -97,16 +97,6 @@ export default function ShopPage() {
     }
   };
 
-  const isLoading = coinsLoading || rewardsLoading;
-
-  if (isLoading) {
-    return (
-      <div className="flex h-64 items-center justify-center">
-        <div className="h-8 w-8 animate-spin rounded-full border-2 border-nvidia border-t-transparent" />
-      </div>
-    );
-  }
-
   return (
     <div className="space-y-8 pb-24">
       <Confetti active={confettiActive} count={40} />
