@@ -26,7 +26,7 @@ type TimerActions = {
   start: (taskId?: string, taskName?: string) => Promise<void>;
   pause: () => void;
   resume: () => void;
-  stop: () => Promise<{ durationMin: number; pauseCount: number } | null>;
+  stop: () => Promise<{ durationMin: number; pauseCount: number; coinsEarned: number } | null>;
   dismissNudge: () => void;
   setNudgeInterval: (min: number) => void;
   linkTask: (taskId: string, taskName: string) => void;
@@ -168,6 +168,7 @@ export function TimerProvider({ children }: { children: React.ReactNode }) {
     const totalPauseMin = Math.round(
       (totalPauseRef.current + (state.isPaused ? Date.now() - pauseStartRef.current : 0)) / 60000
     );
+    const coinsEarned = Math.floor(durationMin / 15);
 
     if (state.sessionId) {
       try {
@@ -179,6 +180,7 @@ export function TimerProvider({ children }: { children: React.ReactNode }) {
             durationMin,
             pauseCount: state.pauseCount,
             totalPauseMin,
+            coinsEarned,
           }),
         });
       } catch {
@@ -186,7 +188,7 @@ export function TimerProvider({ children }: { children: React.ReactNode }) {
       }
     }
 
-    const result = { durationMin, pauseCount: state.pauseCount };
+    const result = { durationMin, pauseCount: state.pauseCount, coinsEarned };
     setState((s) => ({
       ...s,
       isRunning: false,
