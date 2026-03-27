@@ -58,6 +58,7 @@ function EntryCard({
   // Sync if the entry's notes change externally (e.g. after SWR revalidation)
   useEffect(() => {
     if (!dirty) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setDraft(entry.notes ?? "");
       savedRef.current = entry.notes ?? "";
     }

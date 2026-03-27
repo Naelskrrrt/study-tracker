@@ -96,6 +96,7 @@ export function TimerProvider({ children }: { children: React.ReactNode }) {
       state.elapsedSec % nudgeSec === 0 &&
       !state.showNudge
     ) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setState((s) => ({ ...s, showNudge: true }));
     }
   }, [
