@@ -14,6 +14,7 @@ import Confetti from "@/components/ui/Confetti";
 import Toast from "@/components/ui/Toast";
 import AchievePopup from "@/components/ui/AchievePopup";
 import TimerBar from "@/components/ui/TimerBar";
+import BrainDump from "@/components/ui/BrainDump";
 import { LEVELS } from "@/lib/data/tasks";
 
 const ContribGraph = dynamic(() => import("@/components/ui/ContribGraph"), {
@@ -125,6 +126,8 @@ export default function DashboardPage() {
         />
 
         <FocusCard completedIds={completedIds} onComplete={handleComplete} />
+
+        <BrainDump />
       </div>
 
       {/* Bloc droite — activité */}
