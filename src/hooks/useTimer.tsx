@@ -109,29 +109,36 @@ export function TimerProvider({ children }: { children: React.ReactNode }) {
   const start = useCallback(
     async (taskId?: string, taskName?: string) => {
       if (state.isRunning) return;
+
+      // Start timer immediately (offline-first)
+      startTimeRef.current = Date.now();
+      totalPauseRef.current = 0;
+      setState((s) => ({
+        ...s,
+        isRunning: true,
+        isPaused: false,
+        elapsedSec: 0,
+        pauseElapsedSec: 0,
+        pauseCount: 0,
+        sessionId: null,
+        taskId: taskId ?? null,
+        taskName: taskName ?? null,
+        showNudge: false,
+      }));
+
+      // Persist to DB in background
       try {
         const res = await fetch("/api/sessions", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ taskId: taskId ?? null }),
         });
-        const session = await res.json();
-        startTimeRef.current = Date.now();
-        totalPauseRef.current = 0;
-        setState((s) => ({
-          ...s,
-          isRunning: true,
-          isPaused: false,
-          elapsedSec: 0,
-          pauseElapsedSec: 0,
-          pauseCount: 0,
-          sessionId: session.id,
-          taskId: taskId ?? null,
-          taskName: taskName ?? null,
-          showNudge: false,
-        }));
+        if (res.ok) {
+          const session = await res.json();
+          setState((s) => ({ ...s, sessionId: session.id }));
+        }
       } catch {
-        // Silently fail — user can retry
+        // Timer runs locally even if API fails
       }
     },
     [state.isRunning]
@@ -156,25 +163,27 @@ export function TimerProvider({ children }: { children: React.ReactNode }) {
   }, [state.isPaused]);
 
   const stop = useCallback(async () => {
-    if (!state.isRunning || !state.sessionId) return null;
+    if (!state.isRunning) return null;
     const durationMin = Math.round(state.elapsedSec / 60);
     const totalPauseMin = Math.round(
       (totalPauseRef.current + (state.isPaused ? Date.now() - pauseStartRef.current : 0)) / 60000
     );
 
-    try {
-      await fetch(`/api/sessions/${state.sessionId}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          endedAt: new Date().toISOString(),
-          durationMin,
-          pauseCount: state.pauseCount,
-          totalPauseMin,
-        }),
-      });
-    } catch {
-      // Session saved locally at minimum
+    if (state.sessionId) {
+      try {
+        await fetch(`/api/sessions/${state.sessionId}`, {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            endedAt: new Date().toISOString(),
+            durationMin,
+            pauseCount: state.pauseCount,
+            totalPauseMin,
+          }),
+        });
+      } catch {
+        // Timer data lost if API fails
+      }
     }
 
     const result = { durationMin, pauseCount: state.pauseCount };
