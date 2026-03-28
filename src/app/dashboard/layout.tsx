@@ -1,7 +1,10 @@
 "use client";
 
+import { useState } from "react";
 import BottomNav from "@/components/ui/BottomNav";
 import QuickCaptureModal from "@/components/ui/QuickCaptureModal";
+import ChatButton from "@/components/ui/ChatButton";
+import ChatPanel from "@/components/ui/ChatPanel";
 import { TimerProvider } from "@/hooks/useTimer";
 import { MoodModeProvider } from "@/hooks/useMoodMode";
 import { useMood } from "@/hooks/useMood";
@@ -16,6 +19,8 @@ export default function DashboardLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const [chatOpen, setChatOpen] = useState(false);
+
   return (
     <TimerProvider>
       <MoodModeWrapper>
@@ -23,6 +28,8 @@ export default function DashboardLayout({
           <div className="mx-auto max-w-5xl px-4 pb-24 pt-6">{children}</div>
           <BottomNav />
           <QuickCaptureModal />
+          {!chatOpen && <ChatButton onClick={() => setChatOpen(true)} />}
+          <ChatPanel open={chatOpen} onClose={() => setChatOpen(false)} />
         </div>
       </MoodModeWrapper>
     </TimerProvider>
