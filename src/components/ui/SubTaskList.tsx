@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState, KeyboardEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useSubtasks } from "@/hooks/useSubtasks";
+import GenerateSubtasksButton from "@/components/ui/GenerateSubtasksButton";
 
 type Props = {
   taskId: string;
@@ -66,6 +67,12 @@ export default function SubTaskList({
       await addSubtask(newName.trim());
       setNewName("");
       setAdding(false);
+    }
+  };
+
+  const handleAIConfirm = async (names: string[]) => {
+    for (const name of names) {
+      await addSubtask(name);
     }
   };
 
@@ -159,6 +166,11 @@ export default function SubTaskList({
           </motion.div>
         ))}
       </AnimatePresence>
+
+      {/* AI generate button when no subtasks */}
+      {!isLoading && subtasks.length === 0 && (
+        <GenerateSubtasksButton taskId={taskId} onConfirm={handleAIConfirm} />
+      )}
 
       {/* Add subtask input */}
       <div className="flex items-center gap-2 mt-1">
