@@ -64,9 +64,9 @@ Données de la session :
 - Durée : ${studySession.durationMin ?? 0} minutes
 - Pauses : ${studySession.pauseCount}
 - Tâches complétées : ${completions.length}
-- Sous-tâches complétées : ${subtasksCompleted.map((s) => s.name).join(", ") || "aucune"}
+- Sous-tâches complétées : ${subtasksCompleted.map((s: { name: string }) => s.name).join(", ") || "aucune"}
 - Humeur : ${mood ? `${mood.moodLevel}/5` : "non enregistrée"}
-- Notes brain dump : ${captures.map((c) => c.content).join("; ") || "aucune"}
+- Notes brain dump : ${captures.map((c: { content: string }) => c.content).join("; ") || "aucune"}
 
 Génère :
 1. Ce qui a été accompli

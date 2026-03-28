@@ -47,7 +47,7 @@ export async function POST(
   ]);
 
   const studyTimeMin = sessions.reduce(
-    (s, sess) => s + (sess.durationMin ?? 0),
+    (s: number, sess: { durationMin: number | null }) => s + (sess.durationMin ?? 0),
     0
   );
 
@@ -57,7 +57,7 @@ export async function POST(
     select: { date: true },
     orderBy: { date: "desc" },
   });
-  const dates = new Set(allActivities.map((a) => a.date));
+  const dates = new Set(allActivities.map((a: { date: string }) => a.date));
   let streak = 0;
   const d = new Date(date + "T00:00:00");
   while (dates.has(d.toISOString().slice(0, 10))) {
