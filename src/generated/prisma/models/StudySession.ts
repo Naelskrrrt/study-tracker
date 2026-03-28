@@ -30,12 +30,14 @@ export type StudySessionAvgAggregateOutputType = {
   durationMin: number | null
   pauseCount: number | null
   totalPauseMin: number | null
+  coinsEarned: number | null
 }
 
 export type StudySessionSumAggregateOutputType = {
   durationMin: number | null
   pauseCount: number | null
   totalPauseMin: number | null
+  coinsEarned: number | null
 }
 
 export type StudySessionMinAggregateOutputType = {
@@ -47,6 +49,7 @@ export type StudySessionMinAggregateOutputType = {
   durationMin: number | null
   pauseCount: number | null
   totalPauseMin: number | null
+  coinsEarned: number | null
   debrief: string | null
 }
 
@@ -59,6 +62,7 @@ export type StudySessionMaxAggregateOutputType = {
   durationMin: number | null
   pauseCount: number | null
   totalPauseMin: number | null
+  coinsEarned: number | null
   debrief: string | null
 }
 
@@ -71,6 +75,7 @@ export type StudySessionCountAggregateOutputType = {
   durationMin: number
   pauseCount: number
   totalPauseMin: number
+  coinsEarned: number
   debrief: number
   _all: number
 }
@@ -80,12 +85,14 @@ export type StudySessionAvgAggregateInputType = {
   durationMin?: true
   pauseCount?: true
   totalPauseMin?: true
+  coinsEarned?: true
 }
 
 export type StudySessionSumAggregateInputType = {
   durationMin?: true
   pauseCount?: true
   totalPauseMin?: true
+  coinsEarned?: true
 }
 
 export type StudySessionMinAggregateInputType = {
@@ -97,6 +104,7 @@ export type StudySessionMinAggregateInputType = {
   durationMin?: true
   pauseCount?: true
   totalPauseMin?: true
+  coinsEarned?: true
   debrief?: true
 }
 
@@ -109,6 +117,7 @@ export type StudySessionMaxAggregateInputType = {
   durationMin?: true
   pauseCount?: true
   totalPauseMin?: true
+  coinsEarned?: true
   debrief?: true
 }
 
@@ -121,6 +130,7 @@ export type StudySessionCountAggregateInputType = {
   durationMin?: true
   pauseCount?: true
   totalPauseMin?: true
+  coinsEarned?: true
   debrief?: true
   _all?: true
 }
@@ -220,6 +230,7 @@ export type StudySessionGroupByOutputType = {
   durationMin: number | null
   pauseCount: number
   totalPauseMin: number
+  coinsEarned: number
   debrief: string | null
   _count: StudySessionCountAggregateOutputType | null
   _avg: StudySessionAvgAggregateOutputType | null
@@ -255,6 +266,7 @@ export type StudySessionWhereInput = {
   durationMin?: Prisma.IntNullableFilter<"StudySession"> | number | null
   pauseCount?: Prisma.IntFilter<"StudySession"> | number
   totalPauseMin?: Prisma.IntFilter<"StudySession"> | number
+  coinsEarned?: Prisma.IntFilter<"StudySession"> | number
   debrief?: Prisma.StringNullableFilter<"StudySession"> | string | null
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }
@@ -268,6 +280,7 @@ export type StudySessionOrderByWithRelationInput = {
   durationMin?: Prisma.SortOrderInput | Prisma.SortOrder
   pauseCount?: Prisma.SortOrder
   totalPauseMin?: Prisma.SortOrder
+  coinsEarned?: Prisma.SortOrder
   debrief?: Prisma.SortOrderInput | Prisma.SortOrder
   user?: Prisma.UserOrderByWithRelationInput
 }
@@ -284,6 +297,7 @@ export type StudySessionWhereUniqueInput = Prisma.AtLeast<{
   durationMin?: Prisma.IntNullableFilter<"StudySession"> | number | null
   pauseCount?: Prisma.IntFilter<"StudySession"> | number
   totalPauseMin?: Prisma.IntFilter<"StudySession"> | number
+  coinsEarned?: Prisma.IntFilter<"StudySession"> | number
   debrief?: Prisma.StringNullableFilter<"StudySession"> | string | null
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }, "id">
@@ -297,6 +311,7 @@ export type StudySessionOrderByWithAggregationInput = {
   durationMin?: Prisma.SortOrderInput | Prisma.SortOrder
   pauseCount?: Prisma.SortOrder
   totalPauseMin?: Prisma.SortOrder
+  coinsEarned?: Prisma.SortOrder
   debrief?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.StudySessionCountOrderByAggregateInput
   _avg?: Prisma.StudySessionAvgOrderByAggregateInput
@@ -317,6 +332,7 @@ export type StudySessionScalarWhereWithAggregatesInput = {
   durationMin?: Prisma.IntNullableWithAggregatesFilter<"StudySession"> | number | null
   pauseCount?: Prisma.IntWithAggregatesFilter<"StudySession"> | number
   totalPauseMin?: Prisma.IntWithAggregatesFilter<"StudySession"> | number
+  coinsEarned?: Prisma.IntWithAggregatesFilter<"StudySession"> | number
   debrief?: Prisma.StringNullableWithAggregatesFilter<"StudySession"> | string | null
 }
 
@@ -328,6 +344,7 @@ export type StudySessionCreateInput = {
   durationMin?: number | null
   pauseCount?: number
   totalPauseMin?: number
+  coinsEarned?: number
   debrief?: string | null
   user: Prisma.UserCreateNestedOneWithoutStudySessionsInput
 }
@@ -341,6 +358,7 @@ export type StudySessionUncheckedCreateInput = {
   durationMin?: number | null
   pauseCount?: number
   totalPauseMin?: number
+  coinsEarned?: number
   debrief?: string | null
 }
 
@@ -352,6 +370,7 @@ export type StudySessionUpdateInput = {
   durationMin?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   pauseCount?: Prisma.IntFieldUpdateOperationsInput | number
   totalPauseMin?: Prisma.IntFieldUpdateOperationsInput | number
+  coinsEarned?: Prisma.IntFieldUpdateOperationsInput | number
   debrief?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   user?: Prisma.UserUpdateOneRequiredWithoutStudySessionsNestedInput
 }
@@ -365,6 +384,7 @@ export type StudySessionUncheckedUpdateInput = {
   durationMin?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   pauseCount?: Prisma.IntFieldUpdateOperationsInput | number
   totalPauseMin?: Prisma.IntFieldUpdateOperationsInput | number
+  coinsEarned?: Prisma.IntFieldUpdateOperationsInput | number
   debrief?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
@@ -377,6 +397,7 @@ export type StudySessionCreateManyInput = {
   durationMin?: number | null
   pauseCount?: number
   totalPauseMin?: number
+  coinsEarned?: number
   debrief?: string | null
 }
 
@@ -388,6 +409,7 @@ export type StudySessionUpdateManyMutationInput = {
   durationMin?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   pauseCount?: Prisma.IntFieldUpdateOperationsInput | number
   totalPauseMin?: Prisma.IntFieldUpdateOperationsInput | number
+  coinsEarned?: Prisma.IntFieldUpdateOperationsInput | number
   debrief?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
@@ -400,6 +422,7 @@ export type StudySessionUncheckedUpdateManyInput = {
   durationMin?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   pauseCount?: Prisma.IntFieldUpdateOperationsInput | number
   totalPauseMin?: Prisma.IntFieldUpdateOperationsInput | number
+  coinsEarned?: Prisma.IntFieldUpdateOperationsInput | number
   debrief?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
@@ -422,6 +445,7 @@ export type StudySessionCountOrderByAggregateInput = {
   durationMin?: Prisma.SortOrder
   pauseCount?: Prisma.SortOrder
   totalPauseMin?: Prisma.SortOrder
+  coinsEarned?: Prisma.SortOrder
   debrief?: Prisma.SortOrder
 }
 
@@ -429,6 +453,7 @@ export type StudySessionAvgOrderByAggregateInput = {
   durationMin?: Prisma.SortOrder
   pauseCount?: Prisma.SortOrder
   totalPauseMin?: Prisma.SortOrder
+  coinsEarned?: Prisma.SortOrder
 }
 
 export type StudySessionMaxOrderByAggregateInput = {
@@ -440,6 +465,7 @@ export type StudySessionMaxOrderByAggregateInput = {
   durationMin?: Prisma.SortOrder
   pauseCount?: Prisma.SortOrder
   totalPauseMin?: Prisma.SortOrder
+  coinsEarned?: Prisma.SortOrder
   debrief?: Prisma.SortOrder
 }
 
@@ -452,6 +478,7 @@ export type StudySessionMinOrderByAggregateInput = {
   durationMin?: Prisma.SortOrder
   pauseCount?: Prisma.SortOrder
   totalPauseMin?: Prisma.SortOrder
+  coinsEarned?: Prisma.SortOrder
   debrief?: Prisma.SortOrder
 }
 
@@ -459,6 +486,7 @@ export type StudySessionSumOrderByAggregateInput = {
   durationMin?: Prisma.SortOrder
   pauseCount?: Prisma.SortOrder
   totalPauseMin?: Prisma.SortOrder
+  coinsEarned?: Prisma.SortOrder
 }
 
 export type StudySessionCreateNestedManyWithoutUserInput = {
@@ -511,6 +539,7 @@ export type StudySessionCreateWithoutUserInput = {
   durationMin?: number | null
   pauseCount?: number
   totalPauseMin?: number
+  coinsEarned?: number
   debrief?: string | null
 }
 
@@ -522,6 +551,7 @@ export type StudySessionUncheckedCreateWithoutUserInput = {
   durationMin?: number | null
   pauseCount?: number
   totalPauseMin?: number
+  coinsEarned?: number
   debrief?: string | null
 }
 
@@ -563,6 +593,7 @@ export type StudySessionScalarWhereInput = {
   durationMin?: Prisma.IntNullableFilter<"StudySession"> | number | null
   pauseCount?: Prisma.IntFilter<"StudySession"> | number
   totalPauseMin?: Prisma.IntFilter<"StudySession"> | number
+  coinsEarned?: Prisma.IntFilter<"StudySession"> | number
   debrief?: Prisma.StringNullableFilter<"StudySession"> | string | null
 }
 
@@ -574,6 +605,7 @@ export type StudySessionCreateManyUserInput = {
   durationMin?: number | null
   pauseCount?: number
   totalPauseMin?: number
+  coinsEarned?: number
   debrief?: string | null
 }
 
@@ -585,6 +617,7 @@ export type StudySessionUpdateWithoutUserInput = {
   durationMin?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   pauseCount?: Prisma.IntFieldUpdateOperationsInput | number
   totalPauseMin?: Prisma.IntFieldUpdateOperationsInput | number
+  coinsEarned?: Prisma.IntFieldUpdateOperationsInput | number
   debrief?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
@@ -596,6 +629,7 @@ export type StudySessionUncheckedUpdateWithoutUserInput = {
   durationMin?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   pauseCount?: Prisma.IntFieldUpdateOperationsInput | number
   totalPauseMin?: Prisma.IntFieldUpdateOperationsInput | number
+  coinsEarned?: Prisma.IntFieldUpdateOperationsInput | number
   debrief?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
@@ -607,6 +641,7 @@ export type StudySessionUncheckedUpdateManyWithoutUserInput = {
   durationMin?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   pauseCount?: Prisma.IntFieldUpdateOperationsInput | number
   totalPauseMin?: Prisma.IntFieldUpdateOperationsInput | number
+  coinsEarned?: Prisma.IntFieldUpdateOperationsInput | number
   debrief?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
@@ -621,6 +656,7 @@ export type StudySessionSelect<ExtArgs extends runtime.Types.Extensions.Internal
   durationMin?: boolean
   pauseCount?: boolean
   totalPauseMin?: boolean
+  coinsEarned?: boolean
   debrief?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["studySession"]>
@@ -634,6 +670,7 @@ export type StudySessionSelectCreateManyAndReturn<ExtArgs extends runtime.Types.
   durationMin?: boolean
   pauseCount?: boolean
   totalPauseMin?: boolean
+  coinsEarned?: boolean
   debrief?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["studySession"]>
@@ -647,6 +684,7 @@ export type StudySessionSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.
   durationMin?: boolean
   pauseCount?: boolean
   totalPauseMin?: boolean
+  coinsEarned?: boolean
   debrief?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["studySession"]>
@@ -660,10 +698,11 @@ export type StudySessionSelectScalar = {
   durationMin?: boolean
   pauseCount?: boolean
   totalPauseMin?: boolean
+  coinsEarned?: boolean
   debrief?: boolean
 }
 
-export type StudySessionOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "taskId" | "startedAt" | "endedAt" | "durationMin" | "pauseCount" | "totalPauseMin" | "debrief", ExtArgs["result"]["studySession"]>
+export type StudySessionOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "taskId" | "startedAt" | "endedAt" | "durationMin" | "pauseCount" | "totalPauseMin" | "coinsEarned" | "debrief", ExtArgs["result"]["studySession"]>
 export type StudySessionInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
@@ -688,6 +727,7 @@ export type $StudySessionPayload<ExtArgs extends runtime.Types.Extensions.Intern
     durationMin: number | null
     pauseCount: number
     totalPauseMin: number
+    coinsEarned: number
     debrief: string | null
   }, ExtArgs["result"]["studySession"]>
   composites: {}
@@ -1121,6 +1161,7 @@ export interface StudySessionFieldRefs {
   readonly durationMin: Prisma.FieldRef<"StudySession", 'Int'>
   readonly pauseCount: Prisma.FieldRef<"StudySession", 'Int'>
   readonly totalPauseMin: Prisma.FieldRef<"StudySession", 'Int'>
+  readonly coinsEarned: Prisma.FieldRef<"StudySession", 'Int'>
   readonly debrief: Prisma.FieldRef<"StudySession", 'String'>
 }
     

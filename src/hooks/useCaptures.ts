@@ -18,7 +18,7 @@ export function useCaptures() {
     { revalidateOnFocus: false }
   );
 
-  const captures: QuickCapture[] = data ?? [];
+  const captures: QuickCapture[] = Array.isArray(data) ? data : [];
 
   const addCapture = async (content: string) => {
     const optimistic: QuickCapture = {

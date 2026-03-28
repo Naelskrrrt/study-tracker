@@ -200,10 +200,11 @@ export type UserWhereInput = {
   studySessions?: Prisma.StudySessionListRelationFilter
   subTasks?: Prisma.SubTaskListRelationFilter
   quickCaptures?: Prisma.QuickCaptureListRelationFilter
+  rewards?: Prisma.RewardListRelationFilter
+  journalEntries?: Prisma.JournalEntryListRelationFilter
   notificationPreference?: Prisma.XOR<Prisma.NotificationPreferenceNullableScalarRelationFilter, Prisma.NotificationPreferenceWhereInput> | null
   chatMessages?: Prisma.ChatMessageListRelationFilter
   nudgeCaches?: Prisma.NudgeCacheListRelationFilter
-  journalEntries?: Prisma.JournalEntryListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -223,10 +224,11 @@ export type UserOrderByWithRelationInput = {
   studySessions?: Prisma.StudySessionOrderByRelationAggregateInput
   subTasks?: Prisma.SubTaskOrderByRelationAggregateInput
   quickCaptures?: Prisma.QuickCaptureOrderByRelationAggregateInput
+  rewards?: Prisma.RewardOrderByRelationAggregateInput
+  journalEntries?: Prisma.JournalEntryOrderByRelationAggregateInput
   notificationPreference?: Prisma.NotificationPreferenceOrderByWithRelationInput
   chatMessages?: Prisma.ChatMessageOrderByRelationAggregateInput
   nudgeCaches?: Prisma.NudgeCacheOrderByRelationAggregateInput
-  journalEntries?: Prisma.JournalEntryOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -249,10 +251,11 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   studySessions?: Prisma.StudySessionListRelationFilter
   subTasks?: Prisma.SubTaskListRelationFilter
   quickCaptures?: Prisma.QuickCaptureListRelationFilter
+  rewards?: Prisma.RewardListRelationFilter
+  journalEntries?: Prisma.JournalEntryListRelationFilter
   notificationPreference?: Prisma.XOR<Prisma.NotificationPreferenceNullableScalarRelationFilter, Prisma.NotificationPreferenceWhereInput> | null
   chatMessages?: Prisma.ChatMessageListRelationFilter
   nudgeCaches?: Prisma.NudgeCacheListRelationFilter
-  journalEntries?: Prisma.JournalEntryListRelationFilter
 }, "id" | "email">
 
 export type UserOrderByWithAggregationInput = {
@@ -296,10 +299,11 @@ export type UserCreateInput = {
   studySessions?: Prisma.StudySessionCreateNestedManyWithoutUserInput
   subTasks?: Prisma.SubTaskCreateNestedManyWithoutUserInput
   quickCaptures?: Prisma.QuickCaptureCreateNestedManyWithoutUserInput
+  rewards?: Prisma.RewardCreateNestedManyWithoutUserInput
+  journalEntries?: Prisma.JournalEntryCreateNestedManyWithoutUserInput
   notificationPreference?: Prisma.NotificationPreferenceCreateNestedOneWithoutUserInput
   chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutUserInput
   nudgeCaches?: Prisma.NudgeCacheCreateNestedManyWithoutUserInput
-  journalEntries?: Prisma.JournalEntryCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -319,10 +323,11 @@ export type UserUncheckedCreateInput = {
   studySessions?: Prisma.StudySessionUncheckedCreateNestedManyWithoutUserInput
   subTasks?: Prisma.SubTaskUncheckedCreateNestedManyWithoutUserInput
   quickCaptures?: Prisma.QuickCaptureUncheckedCreateNestedManyWithoutUserInput
+  rewards?: Prisma.RewardUncheckedCreateNestedManyWithoutUserInput
+  journalEntries?: Prisma.JournalEntryUncheckedCreateNestedManyWithoutUserInput
   notificationPreference?: Prisma.NotificationPreferenceUncheckedCreateNestedOneWithoutUserInput
   chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutUserInput
   nudgeCaches?: Prisma.NudgeCacheUncheckedCreateNestedManyWithoutUserInput
-  journalEntries?: Prisma.JournalEntryUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserUpdateInput = {
@@ -342,10 +347,11 @@ export type UserUpdateInput = {
   studySessions?: Prisma.StudySessionUpdateManyWithoutUserNestedInput
   subTasks?: Prisma.SubTaskUpdateManyWithoutUserNestedInput
   quickCaptures?: Prisma.QuickCaptureUpdateManyWithoutUserNestedInput
+  rewards?: Prisma.RewardUpdateManyWithoutUserNestedInput
+  journalEntries?: Prisma.JournalEntryUpdateManyWithoutUserNestedInput
   notificationPreference?: Prisma.NotificationPreferenceUpdateOneWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUpdateManyWithoutUserNestedInput
   nudgeCaches?: Prisma.NudgeCacheUpdateManyWithoutUserNestedInput
-  journalEntries?: Prisma.JournalEntryUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -365,10 +371,11 @@ export type UserUncheckedUpdateInput = {
   studySessions?: Prisma.StudySessionUncheckedUpdateManyWithoutUserNestedInput
   subTasks?: Prisma.SubTaskUncheckedUpdateManyWithoutUserNestedInput
   quickCaptures?: Prisma.QuickCaptureUncheckedUpdateManyWithoutUserNestedInput
+  rewards?: Prisma.RewardUncheckedUpdateManyWithoutUserNestedInput
+  journalEntries?: Prisma.JournalEntryUncheckedUpdateManyWithoutUserNestedInput
   notificationPreference?: Prisma.NotificationPreferenceUncheckedUpdateOneWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutUserNestedInput
   nudgeCaches?: Prisma.NudgeCacheUncheckedUpdateManyWithoutUserNestedInput
-  journalEntries?: Prisma.JournalEntryUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -586,6 +593,34 @@ export type UserUpdateOneRequiredWithoutQuickCapturesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutQuickCapturesInput, Prisma.UserUpdateWithoutQuickCapturesInput>, Prisma.UserUncheckedUpdateWithoutQuickCapturesInput>
 }
 
+export type UserCreateNestedOneWithoutRewardsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutRewardsInput, Prisma.UserUncheckedCreateWithoutRewardsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutRewardsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutRewardsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutRewardsInput, Prisma.UserUncheckedCreateWithoutRewardsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutRewardsInput
+  upsert?: Prisma.UserUpsertWithoutRewardsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutRewardsInput, Prisma.UserUpdateWithoutRewardsInput>, Prisma.UserUncheckedUpdateWithoutRewardsInput>
+}
+
+export type UserCreateNestedOneWithoutJournalEntriesInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutJournalEntriesInput, Prisma.UserUncheckedCreateWithoutJournalEntriesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutJournalEntriesInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutJournalEntriesNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutJournalEntriesInput, Prisma.UserUncheckedCreateWithoutJournalEntriesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutJournalEntriesInput
+  upsert?: Prisma.UserUpsertWithoutJournalEntriesInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutJournalEntriesInput, Prisma.UserUpdateWithoutJournalEntriesInput>, Prisma.UserUncheckedUpdateWithoutJournalEntriesInput>
+}
+
 export type UserCreateNestedOneWithoutNotificationPreferenceInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutNotificationPreferenceInput, Prisma.UserUncheckedCreateWithoutNotificationPreferenceInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutNotificationPreferenceInput
@@ -628,20 +663,6 @@ export type UserUpdateOneRequiredWithoutNudgeCachesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutNudgeCachesInput, Prisma.UserUpdateWithoutNudgeCachesInput>, Prisma.UserUncheckedUpdateWithoutNudgeCachesInput>
 }
 
-export type UserCreateNestedOneWithoutJournalEntriesInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutJournalEntriesInput, Prisma.UserUncheckedCreateWithoutJournalEntriesInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutJournalEntriesInput
-  connect?: Prisma.UserWhereUniqueInput
-}
-
-export type UserUpdateOneRequiredWithoutJournalEntriesNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutJournalEntriesInput, Prisma.UserUncheckedCreateWithoutJournalEntriesInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutJournalEntriesInput
-  upsert?: Prisma.UserUpsertWithoutJournalEntriesInput
-  connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutJournalEntriesInput, Prisma.UserUpdateWithoutJournalEntriesInput>, Prisma.UserUncheckedUpdateWithoutJournalEntriesInput>
-}
-
 export type UserCreateWithoutAccountsInput = {
   id?: string
   name?: string | null
@@ -658,10 +679,11 @@ export type UserCreateWithoutAccountsInput = {
   studySessions?: Prisma.StudySessionCreateNestedManyWithoutUserInput
   subTasks?: Prisma.SubTaskCreateNestedManyWithoutUserInput
   quickCaptures?: Prisma.QuickCaptureCreateNestedManyWithoutUserInput
+  rewards?: Prisma.RewardCreateNestedManyWithoutUserInput
+  journalEntries?: Prisma.JournalEntryCreateNestedManyWithoutUserInput
   notificationPreference?: Prisma.NotificationPreferenceCreateNestedOneWithoutUserInput
   chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutUserInput
   nudgeCaches?: Prisma.NudgeCacheCreateNestedManyWithoutUserInput
-  journalEntries?: Prisma.JournalEntryCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutAccountsInput = {
@@ -680,10 +702,11 @@ export type UserUncheckedCreateWithoutAccountsInput = {
   studySessions?: Prisma.StudySessionUncheckedCreateNestedManyWithoutUserInput
   subTasks?: Prisma.SubTaskUncheckedCreateNestedManyWithoutUserInput
   quickCaptures?: Prisma.QuickCaptureUncheckedCreateNestedManyWithoutUserInput
+  rewards?: Prisma.RewardUncheckedCreateNestedManyWithoutUserInput
+  journalEntries?: Prisma.JournalEntryUncheckedCreateNestedManyWithoutUserInput
   notificationPreference?: Prisma.NotificationPreferenceUncheckedCreateNestedOneWithoutUserInput
   chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutUserInput
   nudgeCaches?: Prisma.NudgeCacheUncheckedCreateNestedManyWithoutUserInput
-  journalEntries?: Prisma.JournalEntryUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutAccountsInput = {
@@ -718,10 +741,11 @@ export type UserUpdateWithoutAccountsInput = {
   studySessions?: Prisma.StudySessionUpdateManyWithoutUserNestedInput
   subTasks?: Prisma.SubTaskUpdateManyWithoutUserNestedInput
   quickCaptures?: Prisma.QuickCaptureUpdateManyWithoutUserNestedInput
+  rewards?: Prisma.RewardUpdateManyWithoutUserNestedInput
+  journalEntries?: Prisma.JournalEntryUpdateManyWithoutUserNestedInput
   notificationPreference?: Prisma.NotificationPreferenceUpdateOneWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUpdateManyWithoutUserNestedInput
   nudgeCaches?: Prisma.NudgeCacheUpdateManyWithoutUserNestedInput
-  journalEntries?: Prisma.JournalEntryUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAccountsInput = {
@@ -740,10 +764,11 @@ export type UserUncheckedUpdateWithoutAccountsInput = {
   studySessions?: Prisma.StudySessionUncheckedUpdateManyWithoutUserNestedInput
   subTasks?: Prisma.SubTaskUncheckedUpdateManyWithoutUserNestedInput
   quickCaptures?: Prisma.QuickCaptureUncheckedUpdateManyWithoutUserNestedInput
+  rewards?: Prisma.RewardUncheckedUpdateManyWithoutUserNestedInput
+  journalEntries?: Prisma.JournalEntryUncheckedUpdateManyWithoutUserNestedInput
   notificationPreference?: Prisma.NotificationPreferenceUncheckedUpdateOneWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutUserNestedInput
   nudgeCaches?: Prisma.NudgeCacheUncheckedUpdateManyWithoutUserNestedInput
-  journalEntries?: Prisma.JournalEntryUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutSessionsInput = {
@@ -762,10 +787,11 @@ export type UserCreateWithoutSessionsInput = {
   studySessions?: Prisma.StudySessionCreateNestedManyWithoutUserInput
   subTasks?: Prisma.SubTaskCreateNestedManyWithoutUserInput
   quickCaptures?: Prisma.QuickCaptureCreateNestedManyWithoutUserInput
+  rewards?: Prisma.RewardCreateNestedManyWithoutUserInput
+  journalEntries?: Prisma.JournalEntryCreateNestedManyWithoutUserInput
   notificationPreference?: Prisma.NotificationPreferenceCreateNestedOneWithoutUserInput
   chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutUserInput
   nudgeCaches?: Prisma.NudgeCacheCreateNestedManyWithoutUserInput
-  journalEntries?: Prisma.JournalEntryCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutSessionsInput = {
@@ -784,10 +810,11 @@ export type UserUncheckedCreateWithoutSessionsInput = {
   studySessions?: Prisma.StudySessionUncheckedCreateNestedManyWithoutUserInput
   subTasks?: Prisma.SubTaskUncheckedCreateNestedManyWithoutUserInput
   quickCaptures?: Prisma.QuickCaptureUncheckedCreateNestedManyWithoutUserInput
+  rewards?: Prisma.RewardUncheckedCreateNestedManyWithoutUserInput
+  journalEntries?: Prisma.JournalEntryUncheckedCreateNestedManyWithoutUserInput
   notificationPreference?: Prisma.NotificationPreferenceUncheckedCreateNestedOneWithoutUserInput
   chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutUserInput
   nudgeCaches?: Prisma.NudgeCacheUncheckedCreateNestedManyWithoutUserInput
-  journalEntries?: Prisma.JournalEntryUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutSessionsInput = {
@@ -822,10 +849,11 @@ export type UserUpdateWithoutSessionsInput = {
   studySessions?: Prisma.StudySessionUpdateManyWithoutUserNestedInput
   subTasks?: Prisma.SubTaskUpdateManyWithoutUserNestedInput
   quickCaptures?: Prisma.QuickCaptureUpdateManyWithoutUserNestedInput
+  rewards?: Prisma.RewardUpdateManyWithoutUserNestedInput
+  journalEntries?: Prisma.JournalEntryUpdateManyWithoutUserNestedInput
   notificationPreference?: Prisma.NotificationPreferenceUpdateOneWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUpdateManyWithoutUserNestedInput
   nudgeCaches?: Prisma.NudgeCacheUpdateManyWithoutUserNestedInput
-  journalEntries?: Prisma.JournalEntryUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSessionsInput = {
@@ -844,10 +872,11 @@ export type UserUncheckedUpdateWithoutSessionsInput = {
   studySessions?: Prisma.StudySessionUncheckedUpdateManyWithoutUserNestedInput
   subTasks?: Prisma.SubTaskUncheckedUpdateManyWithoutUserNestedInput
   quickCaptures?: Prisma.QuickCaptureUncheckedUpdateManyWithoutUserNestedInput
+  rewards?: Prisma.RewardUncheckedUpdateManyWithoutUserNestedInput
+  journalEntries?: Prisma.JournalEntryUncheckedUpdateManyWithoutUserNestedInput
   notificationPreference?: Prisma.NotificationPreferenceUncheckedUpdateOneWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutUserNestedInput
   nudgeCaches?: Prisma.NudgeCacheUncheckedUpdateManyWithoutUserNestedInput
-  journalEntries?: Prisma.JournalEntryUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutTaskCompletionsInput = {
@@ -866,10 +895,11 @@ export type UserCreateWithoutTaskCompletionsInput = {
   studySessions?: Prisma.StudySessionCreateNestedManyWithoutUserInput
   subTasks?: Prisma.SubTaskCreateNestedManyWithoutUserInput
   quickCaptures?: Prisma.QuickCaptureCreateNestedManyWithoutUserInput
+  rewards?: Prisma.RewardCreateNestedManyWithoutUserInput
+  journalEntries?: Prisma.JournalEntryCreateNestedManyWithoutUserInput
   notificationPreference?: Prisma.NotificationPreferenceCreateNestedOneWithoutUserInput
   chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutUserInput
   nudgeCaches?: Prisma.NudgeCacheCreateNestedManyWithoutUserInput
-  journalEntries?: Prisma.JournalEntryCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutTaskCompletionsInput = {
@@ -888,10 +918,11 @@ export type UserUncheckedCreateWithoutTaskCompletionsInput = {
   studySessions?: Prisma.StudySessionUncheckedCreateNestedManyWithoutUserInput
   subTasks?: Prisma.SubTaskUncheckedCreateNestedManyWithoutUserInput
   quickCaptures?: Prisma.QuickCaptureUncheckedCreateNestedManyWithoutUserInput
+  rewards?: Prisma.RewardUncheckedCreateNestedManyWithoutUserInput
+  journalEntries?: Prisma.JournalEntryUncheckedCreateNestedManyWithoutUserInput
   notificationPreference?: Prisma.NotificationPreferenceUncheckedCreateNestedOneWithoutUserInput
   chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutUserInput
   nudgeCaches?: Prisma.NudgeCacheUncheckedCreateNestedManyWithoutUserInput
-  journalEntries?: Prisma.JournalEntryUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutTaskCompletionsInput = {
@@ -926,10 +957,11 @@ export type UserUpdateWithoutTaskCompletionsInput = {
   studySessions?: Prisma.StudySessionUpdateManyWithoutUserNestedInput
   subTasks?: Prisma.SubTaskUpdateManyWithoutUserNestedInput
   quickCaptures?: Prisma.QuickCaptureUpdateManyWithoutUserNestedInput
+  rewards?: Prisma.RewardUpdateManyWithoutUserNestedInput
+  journalEntries?: Prisma.JournalEntryUpdateManyWithoutUserNestedInput
   notificationPreference?: Prisma.NotificationPreferenceUpdateOneWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUpdateManyWithoutUserNestedInput
   nudgeCaches?: Prisma.NudgeCacheUpdateManyWithoutUserNestedInput
-  journalEntries?: Prisma.JournalEntryUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutTaskCompletionsInput = {
@@ -948,10 +980,11 @@ export type UserUncheckedUpdateWithoutTaskCompletionsInput = {
   studySessions?: Prisma.StudySessionUncheckedUpdateManyWithoutUserNestedInput
   subTasks?: Prisma.SubTaskUncheckedUpdateManyWithoutUserNestedInput
   quickCaptures?: Prisma.QuickCaptureUncheckedUpdateManyWithoutUserNestedInput
+  rewards?: Prisma.RewardUncheckedUpdateManyWithoutUserNestedInput
+  journalEntries?: Prisma.JournalEntryUncheckedUpdateManyWithoutUserNestedInput
   notificationPreference?: Prisma.NotificationPreferenceUncheckedUpdateOneWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutUserNestedInput
   nudgeCaches?: Prisma.NudgeCacheUncheckedUpdateManyWithoutUserNestedInput
-  journalEntries?: Prisma.JournalEntryUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutDailyActivitiesInput = {
@@ -970,10 +1003,11 @@ export type UserCreateWithoutDailyActivitiesInput = {
   studySessions?: Prisma.StudySessionCreateNestedManyWithoutUserInput
   subTasks?: Prisma.SubTaskCreateNestedManyWithoutUserInput
   quickCaptures?: Prisma.QuickCaptureCreateNestedManyWithoutUserInput
+  rewards?: Prisma.RewardCreateNestedManyWithoutUserInput
+  journalEntries?: Prisma.JournalEntryCreateNestedManyWithoutUserInput
   notificationPreference?: Prisma.NotificationPreferenceCreateNestedOneWithoutUserInput
   chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutUserInput
   nudgeCaches?: Prisma.NudgeCacheCreateNestedManyWithoutUserInput
-  journalEntries?: Prisma.JournalEntryCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutDailyActivitiesInput = {
@@ -992,10 +1026,11 @@ export type UserUncheckedCreateWithoutDailyActivitiesInput = {
   studySessions?: Prisma.StudySessionUncheckedCreateNestedManyWithoutUserInput
   subTasks?: Prisma.SubTaskUncheckedCreateNestedManyWithoutUserInput
   quickCaptures?: Prisma.QuickCaptureUncheckedCreateNestedManyWithoutUserInput
+  rewards?: Prisma.RewardUncheckedCreateNestedManyWithoutUserInput
+  journalEntries?: Prisma.JournalEntryUncheckedCreateNestedManyWithoutUserInput
   notificationPreference?: Prisma.NotificationPreferenceUncheckedCreateNestedOneWithoutUserInput
   chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutUserInput
   nudgeCaches?: Prisma.NudgeCacheUncheckedCreateNestedManyWithoutUserInput
-  journalEntries?: Prisma.JournalEntryUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutDailyActivitiesInput = {
@@ -1030,10 +1065,11 @@ export type UserUpdateWithoutDailyActivitiesInput = {
   studySessions?: Prisma.StudySessionUpdateManyWithoutUserNestedInput
   subTasks?: Prisma.SubTaskUpdateManyWithoutUserNestedInput
   quickCaptures?: Prisma.QuickCaptureUpdateManyWithoutUserNestedInput
+  rewards?: Prisma.RewardUpdateManyWithoutUserNestedInput
+  journalEntries?: Prisma.JournalEntryUpdateManyWithoutUserNestedInput
   notificationPreference?: Prisma.NotificationPreferenceUpdateOneWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUpdateManyWithoutUserNestedInput
   nudgeCaches?: Prisma.NudgeCacheUpdateManyWithoutUserNestedInput
-  journalEntries?: Prisma.JournalEntryUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutDailyActivitiesInput = {
@@ -1052,10 +1088,11 @@ export type UserUncheckedUpdateWithoutDailyActivitiesInput = {
   studySessions?: Prisma.StudySessionUncheckedUpdateManyWithoutUserNestedInput
   subTasks?: Prisma.SubTaskUncheckedUpdateManyWithoutUserNestedInput
   quickCaptures?: Prisma.QuickCaptureUncheckedUpdateManyWithoutUserNestedInput
+  rewards?: Prisma.RewardUncheckedUpdateManyWithoutUserNestedInput
+  journalEntries?: Prisma.JournalEntryUncheckedUpdateManyWithoutUserNestedInput
   notificationPreference?: Prisma.NotificationPreferenceUncheckedUpdateOneWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutUserNestedInput
   nudgeCaches?: Prisma.NudgeCacheUncheckedUpdateManyWithoutUserNestedInput
-  journalEntries?: Prisma.JournalEntryUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutMoodEntriesInput = {
@@ -1074,10 +1111,11 @@ export type UserCreateWithoutMoodEntriesInput = {
   studySessions?: Prisma.StudySessionCreateNestedManyWithoutUserInput
   subTasks?: Prisma.SubTaskCreateNestedManyWithoutUserInput
   quickCaptures?: Prisma.QuickCaptureCreateNestedManyWithoutUserInput
+  rewards?: Prisma.RewardCreateNestedManyWithoutUserInput
+  journalEntries?: Prisma.JournalEntryCreateNestedManyWithoutUserInput
   notificationPreference?: Prisma.NotificationPreferenceCreateNestedOneWithoutUserInput
   chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutUserInput
   nudgeCaches?: Prisma.NudgeCacheCreateNestedManyWithoutUserInput
-  journalEntries?: Prisma.JournalEntryCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutMoodEntriesInput = {
@@ -1096,10 +1134,11 @@ export type UserUncheckedCreateWithoutMoodEntriesInput = {
   studySessions?: Prisma.StudySessionUncheckedCreateNestedManyWithoutUserInput
   subTasks?: Prisma.SubTaskUncheckedCreateNestedManyWithoutUserInput
   quickCaptures?: Prisma.QuickCaptureUncheckedCreateNestedManyWithoutUserInput
+  rewards?: Prisma.RewardUncheckedCreateNestedManyWithoutUserInput
+  journalEntries?: Prisma.JournalEntryUncheckedCreateNestedManyWithoutUserInput
   notificationPreference?: Prisma.NotificationPreferenceUncheckedCreateNestedOneWithoutUserInput
   chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutUserInput
   nudgeCaches?: Prisma.NudgeCacheUncheckedCreateNestedManyWithoutUserInput
-  journalEntries?: Prisma.JournalEntryUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutMoodEntriesInput = {
@@ -1134,10 +1173,11 @@ export type UserUpdateWithoutMoodEntriesInput = {
   studySessions?: Prisma.StudySessionUpdateManyWithoutUserNestedInput
   subTasks?: Prisma.SubTaskUpdateManyWithoutUserNestedInput
   quickCaptures?: Prisma.QuickCaptureUpdateManyWithoutUserNestedInput
+  rewards?: Prisma.RewardUpdateManyWithoutUserNestedInput
+  journalEntries?: Prisma.JournalEntryUpdateManyWithoutUserNestedInput
   notificationPreference?: Prisma.NotificationPreferenceUpdateOneWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUpdateManyWithoutUserNestedInput
   nudgeCaches?: Prisma.NudgeCacheUpdateManyWithoutUserNestedInput
-  journalEntries?: Prisma.JournalEntryUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMoodEntriesInput = {
@@ -1156,10 +1196,11 @@ export type UserUncheckedUpdateWithoutMoodEntriesInput = {
   studySessions?: Prisma.StudySessionUncheckedUpdateManyWithoutUserNestedInput
   subTasks?: Prisma.SubTaskUncheckedUpdateManyWithoutUserNestedInput
   quickCaptures?: Prisma.QuickCaptureUncheckedUpdateManyWithoutUserNestedInput
+  rewards?: Prisma.RewardUncheckedUpdateManyWithoutUserNestedInput
+  journalEntries?: Prisma.JournalEntryUncheckedUpdateManyWithoutUserNestedInput
   notificationPreference?: Prisma.NotificationPreferenceUncheckedUpdateOneWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutUserNestedInput
   nudgeCaches?: Prisma.NudgeCacheUncheckedUpdateManyWithoutUserNestedInput
-  journalEntries?: Prisma.JournalEntryUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutBudgetItemsInput = {
@@ -1178,10 +1219,11 @@ export type UserCreateWithoutBudgetItemsInput = {
   studySessions?: Prisma.StudySessionCreateNestedManyWithoutUserInput
   subTasks?: Prisma.SubTaskCreateNestedManyWithoutUserInput
   quickCaptures?: Prisma.QuickCaptureCreateNestedManyWithoutUserInput
+  rewards?: Prisma.RewardCreateNestedManyWithoutUserInput
+  journalEntries?: Prisma.JournalEntryCreateNestedManyWithoutUserInput
   notificationPreference?: Prisma.NotificationPreferenceCreateNestedOneWithoutUserInput
   chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutUserInput
   nudgeCaches?: Prisma.NudgeCacheCreateNestedManyWithoutUserInput
-  journalEntries?: Prisma.JournalEntryCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutBudgetItemsInput = {
@@ -1200,10 +1242,11 @@ export type UserUncheckedCreateWithoutBudgetItemsInput = {
   studySessions?: Prisma.StudySessionUncheckedCreateNestedManyWithoutUserInput
   subTasks?: Prisma.SubTaskUncheckedCreateNestedManyWithoutUserInput
   quickCaptures?: Prisma.QuickCaptureUncheckedCreateNestedManyWithoutUserInput
+  rewards?: Prisma.RewardUncheckedCreateNestedManyWithoutUserInput
+  journalEntries?: Prisma.JournalEntryUncheckedCreateNestedManyWithoutUserInput
   notificationPreference?: Prisma.NotificationPreferenceUncheckedCreateNestedOneWithoutUserInput
   chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutUserInput
   nudgeCaches?: Prisma.NudgeCacheUncheckedCreateNestedManyWithoutUserInput
-  journalEntries?: Prisma.JournalEntryUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutBudgetItemsInput = {
@@ -1238,10 +1281,11 @@ export type UserUpdateWithoutBudgetItemsInput = {
   studySessions?: Prisma.StudySessionUpdateManyWithoutUserNestedInput
   subTasks?: Prisma.SubTaskUpdateManyWithoutUserNestedInput
   quickCaptures?: Prisma.QuickCaptureUpdateManyWithoutUserNestedInput
+  rewards?: Prisma.RewardUpdateManyWithoutUserNestedInput
+  journalEntries?: Prisma.JournalEntryUpdateManyWithoutUserNestedInput
   notificationPreference?: Prisma.NotificationPreferenceUpdateOneWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUpdateManyWithoutUserNestedInput
   nudgeCaches?: Prisma.NudgeCacheUpdateManyWithoutUserNestedInput
-  journalEntries?: Prisma.JournalEntryUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBudgetItemsInput = {
@@ -1260,10 +1304,11 @@ export type UserUncheckedUpdateWithoutBudgetItemsInput = {
   studySessions?: Prisma.StudySessionUncheckedUpdateManyWithoutUserNestedInput
   subTasks?: Prisma.SubTaskUncheckedUpdateManyWithoutUserNestedInput
   quickCaptures?: Prisma.QuickCaptureUncheckedUpdateManyWithoutUserNestedInput
+  rewards?: Prisma.RewardUncheckedUpdateManyWithoutUserNestedInput
+  journalEntries?: Prisma.JournalEntryUncheckedUpdateManyWithoutUserNestedInput
   notificationPreference?: Prisma.NotificationPreferenceUncheckedUpdateOneWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutUserNestedInput
   nudgeCaches?: Prisma.NudgeCacheUncheckedUpdateManyWithoutUserNestedInput
-  journalEntries?: Prisma.JournalEntryUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutDeadlinesInput = {
@@ -1282,10 +1327,11 @@ export type UserCreateWithoutDeadlinesInput = {
   studySessions?: Prisma.StudySessionCreateNestedManyWithoutUserInput
   subTasks?: Prisma.SubTaskCreateNestedManyWithoutUserInput
   quickCaptures?: Prisma.QuickCaptureCreateNestedManyWithoutUserInput
+  rewards?: Prisma.RewardCreateNestedManyWithoutUserInput
+  journalEntries?: Prisma.JournalEntryCreateNestedManyWithoutUserInput
   notificationPreference?: Prisma.NotificationPreferenceCreateNestedOneWithoutUserInput
   chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutUserInput
   nudgeCaches?: Prisma.NudgeCacheCreateNestedManyWithoutUserInput
-  journalEntries?: Prisma.JournalEntryCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutDeadlinesInput = {
@@ -1304,10 +1350,11 @@ export type UserUncheckedCreateWithoutDeadlinesInput = {
   studySessions?: Prisma.StudySessionUncheckedCreateNestedManyWithoutUserInput
   subTasks?: Prisma.SubTaskUncheckedCreateNestedManyWithoutUserInput
   quickCaptures?: Prisma.QuickCaptureUncheckedCreateNestedManyWithoutUserInput
+  rewards?: Prisma.RewardUncheckedCreateNestedManyWithoutUserInput
+  journalEntries?: Prisma.JournalEntryUncheckedCreateNestedManyWithoutUserInput
   notificationPreference?: Prisma.NotificationPreferenceUncheckedCreateNestedOneWithoutUserInput
   chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutUserInput
   nudgeCaches?: Prisma.NudgeCacheUncheckedCreateNestedManyWithoutUserInput
-  journalEntries?: Prisma.JournalEntryUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutDeadlinesInput = {
@@ -1342,10 +1389,11 @@ export type UserUpdateWithoutDeadlinesInput = {
   studySessions?: Prisma.StudySessionUpdateManyWithoutUserNestedInput
   subTasks?: Prisma.SubTaskUpdateManyWithoutUserNestedInput
   quickCaptures?: Prisma.QuickCaptureUpdateManyWithoutUserNestedInput
+  rewards?: Prisma.RewardUpdateManyWithoutUserNestedInput
+  journalEntries?: Prisma.JournalEntryUpdateManyWithoutUserNestedInput
   notificationPreference?: Prisma.NotificationPreferenceUpdateOneWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUpdateManyWithoutUserNestedInput
   nudgeCaches?: Prisma.NudgeCacheUpdateManyWithoutUserNestedInput
-  journalEntries?: Prisma.JournalEntryUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutDeadlinesInput = {
@@ -1364,10 +1412,11 @@ export type UserUncheckedUpdateWithoutDeadlinesInput = {
   studySessions?: Prisma.StudySessionUncheckedUpdateManyWithoutUserNestedInput
   subTasks?: Prisma.SubTaskUncheckedUpdateManyWithoutUserNestedInput
   quickCaptures?: Prisma.QuickCaptureUncheckedUpdateManyWithoutUserNestedInput
+  rewards?: Prisma.RewardUncheckedUpdateManyWithoutUserNestedInput
+  journalEntries?: Prisma.JournalEntryUncheckedUpdateManyWithoutUserNestedInput
   notificationPreference?: Prisma.NotificationPreferenceUncheckedUpdateOneWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutUserNestedInput
   nudgeCaches?: Prisma.NudgeCacheUncheckedUpdateManyWithoutUserNestedInput
-  journalEntries?: Prisma.JournalEntryUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutStudySessionsInput = {
@@ -1386,10 +1435,11 @@ export type UserCreateWithoutStudySessionsInput = {
   deadlines?: Prisma.DeadlineCreateNestedManyWithoutUserInput
   subTasks?: Prisma.SubTaskCreateNestedManyWithoutUserInput
   quickCaptures?: Prisma.QuickCaptureCreateNestedManyWithoutUserInput
+  rewards?: Prisma.RewardCreateNestedManyWithoutUserInput
+  journalEntries?: Prisma.JournalEntryCreateNestedManyWithoutUserInput
   notificationPreference?: Prisma.NotificationPreferenceCreateNestedOneWithoutUserInput
   chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutUserInput
   nudgeCaches?: Prisma.NudgeCacheCreateNestedManyWithoutUserInput
-  journalEntries?: Prisma.JournalEntryCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutStudySessionsInput = {
@@ -1408,10 +1458,11 @@ export type UserUncheckedCreateWithoutStudySessionsInput = {
   deadlines?: Prisma.DeadlineUncheckedCreateNestedManyWithoutUserInput
   subTasks?: Prisma.SubTaskUncheckedCreateNestedManyWithoutUserInput
   quickCaptures?: Prisma.QuickCaptureUncheckedCreateNestedManyWithoutUserInput
+  rewards?: Prisma.RewardUncheckedCreateNestedManyWithoutUserInput
+  journalEntries?: Prisma.JournalEntryUncheckedCreateNestedManyWithoutUserInput
   notificationPreference?: Prisma.NotificationPreferenceUncheckedCreateNestedOneWithoutUserInput
   chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutUserInput
   nudgeCaches?: Prisma.NudgeCacheUncheckedCreateNestedManyWithoutUserInput
-  journalEntries?: Prisma.JournalEntryUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutStudySessionsInput = {
@@ -1446,10 +1497,11 @@ export type UserUpdateWithoutStudySessionsInput = {
   deadlines?: Prisma.DeadlineUpdateManyWithoutUserNestedInput
   subTasks?: Prisma.SubTaskUpdateManyWithoutUserNestedInput
   quickCaptures?: Prisma.QuickCaptureUpdateManyWithoutUserNestedInput
+  rewards?: Prisma.RewardUpdateManyWithoutUserNestedInput
+  journalEntries?: Prisma.JournalEntryUpdateManyWithoutUserNestedInput
   notificationPreference?: Prisma.NotificationPreferenceUpdateOneWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUpdateManyWithoutUserNestedInput
   nudgeCaches?: Prisma.NudgeCacheUpdateManyWithoutUserNestedInput
-  journalEntries?: Prisma.JournalEntryUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutStudySessionsInput = {
@@ -1468,10 +1520,11 @@ export type UserUncheckedUpdateWithoutStudySessionsInput = {
   deadlines?: Prisma.DeadlineUncheckedUpdateManyWithoutUserNestedInput
   subTasks?: Prisma.SubTaskUncheckedUpdateManyWithoutUserNestedInput
   quickCaptures?: Prisma.QuickCaptureUncheckedUpdateManyWithoutUserNestedInput
+  rewards?: Prisma.RewardUncheckedUpdateManyWithoutUserNestedInput
+  journalEntries?: Prisma.JournalEntryUncheckedUpdateManyWithoutUserNestedInput
   notificationPreference?: Prisma.NotificationPreferenceUncheckedUpdateOneWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutUserNestedInput
   nudgeCaches?: Prisma.NudgeCacheUncheckedUpdateManyWithoutUserNestedInput
-  journalEntries?: Prisma.JournalEntryUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutSubTasksInput = {
@@ -1490,10 +1543,11 @@ export type UserCreateWithoutSubTasksInput = {
   deadlines?: Prisma.DeadlineCreateNestedManyWithoutUserInput
   studySessions?: Prisma.StudySessionCreateNestedManyWithoutUserInput
   quickCaptures?: Prisma.QuickCaptureCreateNestedManyWithoutUserInput
+  rewards?: Prisma.RewardCreateNestedManyWithoutUserInput
+  journalEntries?: Prisma.JournalEntryCreateNestedManyWithoutUserInput
   notificationPreference?: Prisma.NotificationPreferenceCreateNestedOneWithoutUserInput
   chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutUserInput
   nudgeCaches?: Prisma.NudgeCacheCreateNestedManyWithoutUserInput
-  journalEntries?: Prisma.JournalEntryCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutSubTasksInput = {
@@ -1512,10 +1566,11 @@ export type UserUncheckedCreateWithoutSubTasksInput = {
   deadlines?: Prisma.DeadlineUncheckedCreateNestedManyWithoutUserInput
   studySessions?: Prisma.StudySessionUncheckedCreateNestedManyWithoutUserInput
   quickCaptures?: Prisma.QuickCaptureUncheckedCreateNestedManyWithoutUserInput
+  rewards?: Prisma.RewardUncheckedCreateNestedManyWithoutUserInput
+  journalEntries?: Prisma.JournalEntryUncheckedCreateNestedManyWithoutUserInput
   notificationPreference?: Prisma.NotificationPreferenceUncheckedCreateNestedOneWithoutUserInput
   chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutUserInput
   nudgeCaches?: Prisma.NudgeCacheUncheckedCreateNestedManyWithoutUserInput
-  journalEntries?: Prisma.JournalEntryUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutSubTasksInput = {
@@ -1550,10 +1605,11 @@ export type UserUpdateWithoutSubTasksInput = {
   deadlines?: Prisma.DeadlineUpdateManyWithoutUserNestedInput
   studySessions?: Prisma.StudySessionUpdateManyWithoutUserNestedInput
   quickCaptures?: Prisma.QuickCaptureUpdateManyWithoutUserNestedInput
+  rewards?: Prisma.RewardUpdateManyWithoutUserNestedInput
+  journalEntries?: Prisma.JournalEntryUpdateManyWithoutUserNestedInput
   notificationPreference?: Prisma.NotificationPreferenceUpdateOneWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUpdateManyWithoutUserNestedInput
   nudgeCaches?: Prisma.NudgeCacheUpdateManyWithoutUserNestedInput
-  journalEntries?: Prisma.JournalEntryUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSubTasksInput = {
@@ -1572,10 +1628,11 @@ export type UserUncheckedUpdateWithoutSubTasksInput = {
   deadlines?: Prisma.DeadlineUncheckedUpdateManyWithoutUserNestedInput
   studySessions?: Prisma.StudySessionUncheckedUpdateManyWithoutUserNestedInput
   quickCaptures?: Prisma.QuickCaptureUncheckedUpdateManyWithoutUserNestedInput
+  rewards?: Prisma.RewardUncheckedUpdateManyWithoutUserNestedInput
+  journalEntries?: Prisma.JournalEntryUncheckedUpdateManyWithoutUserNestedInput
   notificationPreference?: Prisma.NotificationPreferenceUncheckedUpdateOneWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutUserNestedInput
   nudgeCaches?: Prisma.NudgeCacheUncheckedUpdateManyWithoutUserNestedInput
-  journalEntries?: Prisma.JournalEntryUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutQuickCapturesInput = {
@@ -1594,10 +1651,11 @@ export type UserCreateWithoutQuickCapturesInput = {
   deadlines?: Prisma.DeadlineCreateNestedManyWithoutUserInput
   studySessions?: Prisma.StudySessionCreateNestedManyWithoutUserInput
   subTasks?: Prisma.SubTaskCreateNestedManyWithoutUserInput
+  rewards?: Prisma.RewardCreateNestedManyWithoutUserInput
+  journalEntries?: Prisma.JournalEntryCreateNestedManyWithoutUserInput
   notificationPreference?: Prisma.NotificationPreferenceCreateNestedOneWithoutUserInput
   chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutUserInput
   nudgeCaches?: Prisma.NudgeCacheCreateNestedManyWithoutUserInput
-  journalEntries?: Prisma.JournalEntryCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutQuickCapturesInput = {
@@ -1616,10 +1674,11 @@ export type UserUncheckedCreateWithoutQuickCapturesInput = {
   deadlines?: Prisma.DeadlineUncheckedCreateNestedManyWithoutUserInput
   studySessions?: Prisma.StudySessionUncheckedCreateNestedManyWithoutUserInput
   subTasks?: Prisma.SubTaskUncheckedCreateNestedManyWithoutUserInput
+  rewards?: Prisma.RewardUncheckedCreateNestedManyWithoutUserInput
+  journalEntries?: Prisma.JournalEntryUncheckedCreateNestedManyWithoutUserInput
   notificationPreference?: Prisma.NotificationPreferenceUncheckedCreateNestedOneWithoutUserInput
   chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutUserInput
   nudgeCaches?: Prisma.NudgeCacheUncheckedCreateNestedManyWithoutUserInput
-  journalEntries?: Prisma.JournalEntryUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutQuickCapturesInput = {
@@ -1654,10 +1713,11 @@ export type UserUpdateWithoutQuickCapturesInput = {
   deadlines?: Prisma.DeadlineUpdateManyWithoutUserNestedInput
   studySessions?: Prisma.StudySessionUpdateManyWithoutUserNestedInput
   subTasks?: Prisma.SubTaskUpdateManyWithoutUserNestedInput
+  rewards?: Prisma.RewardUpdateManyWithoutUserNestedInput
+  journalEntries?: Prisma.JournalEntryUpdateManyWithoutUserNestedInput
   notificationPreference?: Prisma.NotificationPreferenceUpdateOneWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUpdateManyWithoutUserNestedInput
   nudgeCaches?: Prisma.NudgeCacheUpdateManyWithoutUserNestedInput
-  journalEntries?: Prisma.JournalEntryUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutQuickCapturesInput = {
@@ -1676,13 +1736,14 @@ export type UserUncheckedUpdateWithoutQuickCapturesInput = {
   deadlines?: Prisma.DeadlineUncheckedUpdateManyWithoutUserNestedInput
   studySessions?: Prisma.StudySessionUncheckedUpdateManyWithoutUserNestedInput
   subTasks?: Prisma.SubTaskUncheckedUpdateManyWithoutUserNestedInput
+  rewards?: Prisma.RewardUncheckedUpdateManyWithoutUserNestedInput
+  journalEntries?: Prisma.JournalEntryUncheckedUpdateManyWithoutUserNestedInput
   notificationPreference?: Prisma.NotificationPreferenceUncheckedUpdateOneWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutUserNestedInput
   nudgeCaches?: Prisma.NudgeCacheUncheckedUpdateManyWithoutUserNestedInput
-  journalEntries?: Prisma.JournalEntryUncheckedUpdateManyWithoutUserNestedInput
 }
 
-export type UserCreateWithoutNotificationPreferenceInput = {
+export type UserCreateWithoutRewardsInput = {
   id?: string
   name?: string | null
   email: string
@@ -1699,220 +1760,13 @@ export type UserCreateWithoutNotificationPreferenceInput = {
   studySessions?: Prisma.StudySessionCreateNestedManyWithoutUserInput
   subTasks?: Prisma.SubTaskCreateNestedManyWithoutUserInput
   quickCaptures?: Prisma.QuickCaptureCreateNestedManyWithoutUserInput
-  chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutUserInput
-  nudgeCaches?: Prisma.NudgeCacheCreateNestedManyWithoutUserInput
   journalEntries?: Prisma.JournalEntryCreateNestedManyWithoutUserInput
-}
-
-export type UserUncheckedCreateWithoutNotificationPreferenceInput = {
-  id?: string
-  name?: string | null
-  email: string
-  emailVerified?: Date | string | null
-  image?: string | null
-  createdAt?: Date | string
-  accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
-  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
-  taskCompletions?: Prisma.TaskCompletionUncheckedCreateNestedManyWithoutUserInput
-  dailyActivities?: Prisma.DailyActivityUncheckedCreateNestedManyWithoutUserInput
-  moodEntries?: Prisma.MoodEntryUncheckedCreateNestedManyWithoutUserInput
-  budgetItems?: Prisma.BudgetItemUncheckedCreateNestedManyWithoutUserInput
-  deadlines?: Prisma.DeadlineUncheckedCreateNestedManyWithoutUserInput
-  studySessions?: Prisma.StudySessionUncheckedCreateNestedManyWithoutUserInput
-  subTasks?: Prisma.SubTaskUncheckedCreateNestedManyWithoutUserInput
-  quickCaptures?: Prisma.QuickCaptureUncheckedCreateNestedManyWithoutUserInput
-  chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutUserInput
-  nudgeCaches?: Prisma.NudgeCacheUncheckedCreateNestedManyWithoutUserInput
-  journalEntries?: Prisma.JournalEntryUncheckedCreateNestedManyWithoutUserInput
-}
-
-export type UserCreateOrConnectWithoutNotificationPreferenceInput = {
-  where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutNotificationPreferenceInput, Prisma.UserUncheckedCreateWithoutNotificationPreferenceInput>
-}
-
-export type UserUpsertWithoutNotificationPreferenceInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutNotificationPreferenceInput, Prisma.UserUncheckedUpdateWithoutNotificationPreferenceInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutNotificationPreferenceInput, Prisma.UserUncheckedCreateWithoutNotificationPreferenceInput>
-  where?: Prisma.UserWhereInput
-}
-
-export type UserUpdateToOneWithWhereWithoutNotificationPreferenceInput = {
-  where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutNotificationPreferenceInput, Prisma.UserUncheckedUpdateWithoutNotificationPreferenceInput>
-}
-
-export type UserUpdateWithoutNotificationPreferenceInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
-  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
-  taskCompletions?: Prisma.TaskCompletionUpdateManyWithoutUserNestedInput
-  dailyActivities?: Prisma.DailyActivityUpdateManyWithoutUserNestedInput
-  moodEntries?: Prisma.MoodEntryUpdateManyWithoutUserNestedInput
-  budgetItems?: Prisma.BudgetItemUpdateManyWithoutUserNestedInput
-  deadlines?: Prisma.DeadlineUpdateManyWithoutUserNestedInput
-  studySessions?: Prisma.StudySessionUpdateManyWithoutUserNestedInput
-  subTasks?: Prisma.SubTaskUpdateManyWithoutUserNestedInput
-  quickCaptures?: Prisma.QuickCaptureUpdateManyWithoutUserNestedInput
-  chatMessages?: Prisma.ChatMessageUpdateManyWithoutUserNestedInput
-  nudgeCaches?: Prisma.NudgeCacheUpdateManyWithoutUserNestedInput
-  journalEntries?: Prisma.JournalEntryUpdateManyWithoutUserNestedInput
-}
-
-export type UserUncheckedUpdateWithoutNotificationPreferenceInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
-  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
-  taskCompletions?: Prisma.TaskCompletionUncheckedUpdateManyWithoutUserNestedInput
-  dailyActivities?: Prisma.DailyActivityUncheckedUpdateManyWithoutUserNestedInput
-  moodEntries?: Prisma.MoodEntryUncheckedUpdateManyWithoutUserNestedInput
-  budgetItems?: Prisma.BudgetItemUncheckedUpdateManyWithoutUserNestedInput
-  deadlines?: Prisma.DeadlineUncheckedUpdateManyWithoutUserNestedInput
-  studySessions?: Prisma.StudySessionUncheckedUpdateManyWithoutUserNestedInput
-  subTasks?: Prisma.SubTaskUncheckedUpdateManyWithoutUserNestedInput
-  quickCaptures?: Prisma.QuickCaptureUncheckedUpdateManyWithoutUserNestedInput
-  chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutUserNestedInput
-  nudgeCaches?: Prisma.NudgeCacheUncheckedUpdateManyWithoutUserNestedInput
-  journalEntries?: Prisma.JournalEntryUncheckedUpdateManyWithoutUserNestedInput
-}
-
-export type UserCreateWithoutChatMessagesInput = {
-  id?: string
-  name?: string | null
-  email: string
-  emailVerified?: Date | string | null
-  image?: string | null
-  createdAt?: Date | string
-  accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
-  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
-  taskCompletions?: Prisma.TaskCompletionCreateNestedManyWithoutUserInput
-  dailyActivities?: Prisma.DailyActivityCreateNestedManyWithoutUserInput
-  moodEntries?: Prisma.MoodEntryCreateNestedManyWithoutUserInput
-  budgetItems?: Prisma.BudgetItemCreateNestedManyWithoutUserInput
-  deadlines?: Prisma.DeadlineCreateNestedManyWithoutUserInput
-  studySessions?: Prisma.StudySessionCreateNestedManyWithoutUserInput
-  subTasks?: Prisma.SubTaskCreateNestedManyWithoutUserInput
-  quickCaptures?: Prisma.QuickCaptureCreateNestedManyWithoutUserInput
-  notificationPreference?: Prisma.NotificationPreferenceCreateNestedOneWithoutUserInput
-  nudgeCaches?: Prisma.NudgeCacheCreateNestedManyWithoutUserInput
-  journalEntries?: Prisma.JournalEntryCreateNestedManyWithoutUserInput
-}
-
-export type UserUncheckedCreateWithoutChatMessagesInput = {
-  id?: string
-  name?: string | null
-  email: string
-  emailVerified?: Date | string | null
-  image?: string | null
-  createdAt?: Date | string
-  accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
-  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
-  taskCompletions?: Prisma.TaskCompletionUncheckedCreateNestedManyWithoutUserInput
-  dailyActivities?: Prisma.DailyActivityUncheckedCreateNestedManyWithoutUserInput
-  moodEntries?: Prisma.MoodEntryUncheckedCreateNestedManyWithoutUserInput
-  budgetItems?: Prisma.BudgetItemUncheckedCreateNestedManyWithoutUserInput
-  deadlines?: Prisma.DeadlineUncheckedCreateNestedManyWithoutUserInput
-  studySessions?: Prisma.StudySessionUncheckedCreateNestedManyWithoutUserInput
-  subTasks?: Prisma.SubTaskUncheckedCreateNestedManyWithoutUserInput
-  quickCaptures?: Prisma.QuickCaptureUncheckedCreateNestedManyWithoutUserInput
-  notificationPreference?: Prisma.NotificationPreferenceUncheckedCreateNestedOneWithoutUserInput
-  nudgeCaches?: Prisma.NudgeCacheUncheckedCreateNestedManyWithoutUserInput
-  journalEntries?: Prisma.JournalEntryUncheckedCreateNestedManyWithoutUserInput
-}
-
-export type UserCreateOrConnectWithoutChatMessagesInput = {
-  where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutChatMessagesInput, Prisma.UserUncheckedCreateWithoutChatMessagesInput>
-}
-
-export type UserUpsertWithoutChatMessagesInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutChatMessagesInput, Prisma.UserUncheckedUpdateWithoutChatMessagesInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutChatMessagesInput, Prisma.UserUncheckedCreateWithoutChatMessagesInput>
-  where?: Prisma.UserWhereInput
-}
-
-export type UserUpdateToOneWithWhereWithoutChatMessagesInput = {
-  where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutChatMessagesInput, Prisma.UserUncheckedUpdateWithoutChatMessagesInput>
-}
-
-export type UserUpdateWithoutChatMessagesInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
-  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
-  taskCompletions?: Prisma.TaskCompletionUpdateManyWithoutUserNestedInput
-  dailyActivities?: Prisma.DailyActivityUpdateManyWithoutUserNestedInput
-  moodEntries?: Prisma.MoodEntryUpdateManyWithoutUserNestedInput
-  budgetItems?: Prisma.BudgetItemUpdateManyWithoutUserNestedInput
-  deadlines?: Prisma.DeadlineUpdateManyWithoutUserNestedInput
-  studySessions?: Prisma.StudySessionUpdateManyWithoutUserNestedInput
-  subTasks?: Prisma.SubTaskUpdateManyWithoutUserNestedInput
-  quickCaptures?: Prisma.QuickCaptureUpdateManyWithoutUserNestedInput
-  notificationPreference?: Prisma.NotificationPreferenceUpdateOneWithoutUserNestedInput
-  nudgeCaches?: Prisma.NudgeCacheUpdateManyWithoutUserNestedInput
-  journalEntries?: Prisma.JournalEntryUpdateManyWithoutUserNestedInput
-}
-
-export type UserUncheckedUpdateWithoutChatMessagesInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
-  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
-  taskCompletions?: Prisma.TaskCompletionUncheckedUpdateManyWithoutUserNestedInput
-  dailyActivities?: Prisma.DailyActivityUncheckedUpdateManyWithoutUserNestedInput
-  moodEntries?: Prisma.MoodEntryUncheckedUpdateManyWithoutUserNestedInput
-  budgetItems?: Prisma.BudgetItemUncheckedUpdateManyWithoutUserNestedInput
-  deadlines?: Prisma.DeadlineUncheckedUpdateManyWithoutUserNestedInput
-  studySessions?: Prisma.StudySessionUncheckedUpdateManyWithoutUserNestedInput
-  subTasks?: Prisma.SubTaskUncheckedUpdateManyWithoutUserNestedInput
-  quickCaptures?: Prisma.QuickCaptureUncheckedUpdateManyWithoutUserNestedInput
-  notificationPreference?: Prisma.NotificationPreferenceUncheckedUpdateOneWithoutUserNestedInput
-  nudgeCaches?: Prisma.NudgeCacheUncheckedUpdateManyWithoutUserNestedInput
-  journalEntries?: Prisma.JournalEntryUncheckedUpdateManyWithoutUserNestedInput
-}
-
-export type UserCreateWithoutNudgeCachesInput = {
-  id?: string
-  name?: string | null
-  email: string
-  emailVerified?: Date | string | null
-  image?: string | null
-  createdAt?: Date | string
-  accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
-  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
-  taskCompletions?: Prisma.TaskCompletionCreateNestedManyWithoutUserInput
-  dailyActivities?: Prisma.DailyActivityCreateNestedManyWithoutUserInput
-  moodEntries?: Prisma.MoodEntryCreateNestedManyWithoutUserInput
-  budgetItems?: Prisma.BudgetItemCreateNestedManyWithoutUserInput
-  deadlines?: Prisma.DeadlineCreateNestedManyWithoutUserInput
-  studySessions?: Prisma.StudySessionCreateNestedManyWithoutUserInput
-  subTasks?: Prisma.SubTaskCreateNestedManyWithoutUserInput
-  quickCaptures?: Prisma.QuickCaptureCreateNestedManyWithoutUserInput
   notificationPreference?: Prisma.NotificationPreferenceCreateNestedOneWithoutUserInput
   chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutUserInput
-  journalEntries?: Prisma.JournalEntryCreateNestedManyWithoutUserInput
+  nudgeCaches?: Prisma.NudgeCacheCreateNestedManyWithoutUserInput
 }
 
-export type UserUncheckedCreateWithoutNudgeCachesInput = {
+export type UserUncheckedCreateWithoutRewardsInput = {
   id?: string
   name?: string | null
   email: string
@@ -1929,28 +1783,29 @@ export type UserUncheckedCreateWithoutNudgeCachesInput = {
   studySessions?: Prisma.StudySessionUncheckedCreateNestedManyWithoutUserInput
   subTasks?: Prisma.SubTaskUncheckedCreateNestedManyWithoutUserInput
   quickCaptures?: Prisma.QuickCaptureUncheckedCreateNestedManyWithoutUserInput
+  journalEntries?: Prisma.JournalEntryUncheckedCreateNestedManyWithoutUserInput
   notificationPreference?: Prisma.NotificationPreferenceUncheckedCreateNestedOneWithoutUserInput
   chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutUserInput
-  journalEntries?: Prisma.JournalEntryUncheckedCreateNestedManyWithoutUserInput
+  nudgeCaches?: Prisma.NudgeCacheUncheckedCreateNestedManyWithoutUserInput
 }
 
-export type UserCreateOrConnectWithoutNudgeCachesInput = {
+export type UserCreateOrConnectWithoutRewardsInput = {
   where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutNudgeCachesInput, Prisma.UserUncheckedCreateWithoutNudgeCachesInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutRewardsInput, Prisma.UserUncheckedCreateWithoutRewardsInput>
 }
 
-export type UserUpsertWithoutNudgeCachesInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutNudgeCachesInput, Prisma.UserUncheckedUpdateWithoutNudgeCachesInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutNudgeCachesInput, Prisma.UserUncheckedCreateWithoutNudgeCachesInput>
+export type UserUpsertWithoutRewardsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutRewardsInput, Prisma.UserUncheckedUpdateWithoutRewardsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutRewardsInput, Prisma.UserUncheckedCreateWithoutRewardsInput>
   where?: Prisma.UserWhereInput
 }
 
-export type UserUpdateToOneWithWhereWithoutNudgeCachesInput = {
+export type UserUpdateToOneWithWhereWithoutRewardsInput = {
   where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutNudgeCachesInput, Prisma.UserUncheckedUpdateWithoutNudgeCachesInput>
+  data: Prisma.XOR<Prisma.UserUpdateWithoutRewardsInput, Prisma.UserUncheckedUpdateWithoutRewardsInput>
 }
 
-export type UserUpdateWithoutNudgeCachesInput = {
+export type UserUpdateWithoutRewardsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1967,12 +1822,13 @@ export type UserUpdateWithoutNudgeCachesInput = {
   studySessions?: Prisma.StudySessionUpdateManyWithoutUserNestedInput
   subTasks?: Prisma.SubTaskUpdateManyWithoutUserNestedInput
   quickCaptures?: Prisma.QuickCaptureUpdateManyWithoutUserNestedInput
+  journalEntries?: Prisma.JournalEntryUpdateManyWithoutUserNestedInput
   notificationPreference?: Prisma.NotificationPreferenceUpdateOneWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUpdateManyWithoutUserNestedInput
-  journalEntries?: Prisma.JournalEntryUpdateManyWithoutUserNestedInput
+  nudgeCaches?: Prisma.NudgeCacheUpdateManyWithoutUserNestedInput
 }
 
-export type UserUncheckedUpdateWithoutNudgeCachesInput = {
+export type UserUncheckedUpdateWithoutRewardsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1989,9 +1845,10 @@ export type UserUncheckedUpdateWithoutNudgeCachesInput = {
   studySessions?: Prisma.StudySessionUncheckedUpdateManyWithoutUserNestedInput
   subTasks?: Prisma.SubTaskUncheckedUpdateManyWithoutUserNestedInput
   quickCaptures?: Prisma.QuickCaptureUncheckedUpdateManyWithoutUserNestedInput
+  journalEntries?: Prisma.JournalEntryUncheckedUpdateManyWithoutUserNestedInput
   notificationPreference?: Prisma.NotificationPreferenceUncheckedUpdateOneWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutUserNestedInput
-  journalEntries?: Prisma.JournalEntryUncheckedUpdateManyWithoutUserNestedInput
+  nudgeCaches?: Prisma.NudgeCacheUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutJournalEntriesInput = {
@@ -2011,6 +1868,7 @@ export type UserCreateWithoutJournalEntriesInput = {
   studySessions?: Prisma.StudySessionCreateNestedManyWithoutUserInput
   subTasks?: Prisma.SubTaskCreateNestedManyWithoutUserInput
   quickCaptures?: Prisma.QuickCaptureCreateNestedManyWithoutUserInput
+  rewards?: Prisma.RewardCreateNestedManyWithoutUserInput
   notificationPreference?: Prisma.NotificationPreferenceCreateNestedOneWithoutUserInput
   chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutUserInput
   nudgeCaches?: Prisma.NudgeCacheCreateNestedManyWithoutUserInput
@@ -2033,6 +1891,7 @@ export type UserUncheckedCreateWithoutJournalEntriesInput = {
   studySessions?: Prisma.StudySessionUncheckedCreateNestedManyWithoutUserInput
   subTasks?: Prisma.SubTaskUncheckedCreateNestedManyWithoutUserInput
   quickCaptures?: Prisma.QuickCaptureUncheckedCreateNestedManyWithoutUserInput
+  rewards?: Prisma.RewardUncheckedCreateNestedManyWithoutUserInput
   notificationPreference?: Prisma.NotificationPreferenceUncheckedCreateNestedOneWithoutUserInput
   chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutUserInput
   nudgeCaches?: Prisma.NudgeCacheUncheckedCreateNestedManyWithoutUserInput
@@ -2071,6 +1930,7 @@ export type UserUpdateWithoutJournalEntriesInput = {
   studySessions?: Prisma.StudySessionUpdateManyWithoutUserNestedInput
   subTasks?: Prisma.SubTaskUpdateManyWithoutUserNestedInput
   quickCaptures?: Prisma.QuickCaptureUpdateManyWithoutUserNestedInput
+  rewards?: Prisma.RewardUpdateManyWithoutUserNestedInput
   notificationPreference?: Prisma.NotificationPreferenceUpdateOneWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUpdateManyWithoutUserNestedInput
   nudgeCaches?: Prisma.NudgeCacheUpdateManyWithoutUserNestedInput
@@ -2093,9 +1953,334 @@ export type UserUncheckedUpdateWithoutJournalEntriesInput = {
   studySessions?: Prisma.StudySessionUncheckedUpdateManyWithoutUserNestedInput
   subTasks?: Prisma.SubTaskUncheckedUpdateManyWithoutUserNestedInput
   quickCaptures?: Prisma.QuickCaptureUncheckedUpdateManyWithoutUserNestedInput
+  rewards?: Prisma.RewardUncheckedUpdateManyWithoutUserNestedInput
   notificationPreference?: Prisma.NotificationPreferenceUncheckedUpdateOneWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutUserNestedInput
   nudgeCaches?: Prisma.NudgeCacheUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutNotificationPreferenceInput = {
+  id?: string
+  name?: string | null
+  email: string
+  emailVerified?: Date | string | null
+  image?: string | null
+  createdAt?: Date | string
+  accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
+  taskCompletions?: Prisma.TaskCompletionCreateNestedManyWithoutUserInput
+  dailyActivities?: Prisma.DailyActivityCreateNestedManyWithoutUserInput
+  moodEntries?: Prisma.MoodEntryCreateNestedManyWithoutUserInput
+  budgetItems?: Prisma.BudgetItemCreateNestedManyWithoutUserInput
+  deadlines?: Prisma.DeadlineCreateNestedManyWithoutUserInput
+  studySessions?: Prisma.StudySessionCreateNestedManyWithoutUserInput
+  subTasks?: Prisma.SubTaskCreateNestedManyWithoutUserInput
+  quickCaptures?: Prisma.QuickCaptureCreateNestedManyWithoutUserInput
+  rewards?: Prisma.RewardCreateNestedManyWithoutUserInput
+  journalEntries?: Prisma.JournalEntryCreateNestedManyWithoutUserInput
+  chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutUserInput
+  nudgeCaches?: Prisma.NudgeCacheCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutNotificationPreferenceInput = {
+  id?: string
+  name?: string | null
+  email: string
+  emailVerified?: Date | string | null
+  image?: string | null
+  createdAt?: Date | string
+  accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
+  taskCompletions?: Prisma.TaskCompletionUncheckedCreateNestedManyWithoutUserInput
+  dailyActivities?: Prisma.DailyActivityUncheckedCreateNestedManyWithoutUserInput
+  moodEntries?: Prisma.MoodEntryUncheckedCreateNestedManyWithoutUserInput
+  budgetItems?: Prisma.BudgetItemUncheckedCreateNestedManyWithoutUserInput
+  deadlines?: Prisma.DeadlineUncheckedCreateNestedManyWithoutUserInput
+  studySessions?: Prisma.StudySessionUncheckedCreateNestedManyWithoutUserInput
+  subTasks?: Prisma.SubTaskUncheckedCreateNestedManyWithoutUserInput
+  quickCaptures?: Prisma.QuickCaptureUncheckedCreateNestedManyWithoutUserInput
+  rewards?: Prisma.RewardUncheckedCreateNestedManyWithoutUserInput
+  journalEntries?: Prisma.JournalEntryUncheckedCreateNestedManyWithoutUserInput
+  chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutUserInput
+  nudgeCaches?: Prisma.NudgeCacheUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutNotificationPreferenceInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutNotificationPreferenceInput, Prisma.UserUncheckedCreateWithoutNotificationPreferenceInput>
+}
+
+export type UserUpsertWithoutNotificationPreferenceInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutNotificationPreferenceInput, Prisma.UserUncheckedUpdateWithoutNotificationPreferenceInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutNotificationPreferenceInput, Prisma.UserUncheckedCreateWithoutNotificationPreferenceInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutNotificationPreferenceInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutNotificationPreferenceInput, Prisma.UserUncheckedUpdateWithoutNotificationPreferenceInput>
+}
+
+export type UserUpdateWithoutNotificationPreferenceInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
+  taskCompletions?: Prisma.TaskCompletionUpdateManyWithoutUserNestedInput
+  dailyActivities?: Prisma.DailyActivityUpdateManyWithoutUserNestedInput
+  moodEntries?: Prisma.MoodEntryUpdateManyWithoutUserNestedInput
+  budgetItems?: Prisma.BudgetItemUpdateManyWithoutUserNestedInput
+  deadlines?: Prisma.DeadlineUpdateManyWithoutUserNestedInput
+  studySessions?: Prisma.StudySessionUpdateManyWithoutUserNestedInput
+  subTasks?: Prisma.SubTaskUpdateManyWithoutUserNestedInput
+  quickCaptures?: Prisma.QuickCaptureUpdateManyWithoutUserNestedInput
+  rewards?: Prisma.RewardUpdateManyWithoutUserNestedInput
+  journalEntries?: Prisma.JournalEntryUpdateManyWithoutUserNestedInput
+  chatMessages?: Prisma.ChatMessageUpdateManyWithoutUserNestedInput
+  nudgeCaches?: Prisma.NudgeCacheUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutNotificationPreferenceInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
+  taskCompletions?: Prisma.TaskCompletionUncheckedUpdateManyWithoutUserNestedInput
+  dailyActivities?: Prisma.DailyActivityUncheckedUpdateManyWithoutUserNestedInput
+  moodEntries?: Prisma.MoodEntryUncheckedUpdateManyWithoutUserNestedInput
+  budgetItems?: Prisma.BudgetItemUncheckedUpdateManyWithoutUserNestedInput
+  deadlines?: Prisma.DeadlineUncheckedUpdateManyWithoutUserNestedInput
+  studySessions?: Prisma.StudySessionUncheckedUpdateManyWithoutUserNestedInput
+  subTasks?: Prisma.SubTaskUncheckedUpdateManyWithoutUserNestedInput
+  quickCaptures?: Prisma.QuickCaptureUncheckedUpdateManyWithoutUserNestedInput
+  rewards?: Prisma.RewardUncheckedUpdateManyWithoutUserNestedInput
+  journalEntries?: Prisma.JournalEntryUncheckedUpdateManyWithoutUserNestedInput
+  chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutUserNestedInput
+  nudgeCaches?: Prisma.NudgeCacheUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutChatMessagesInput = {
+  id?: string
+  name?: string | null
+  email: string
+  emailVerified?: Date | string | null
+  image?: string | null
+  createdAt?: Date | string
+  accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
+  taskCompletions?: Prisma.TaskCompletionCreateNestedManyWithoutUserInput
+  dailyActivities?: Prisma.DailyActivityCreateNestedManyWithoutUserInput
+  moodEntries?: Prisma.MoodEntryCreateNestedManyWithoutUserInput
+  budgetItems?: Prisma.BudgetItemCreateNestedManyWithoutUserInput
+  deadlines?: Prisma.DeadlineCreateNestedManyWithoutUserInput
+  studySessions?: Prisma.StudySessionCreateNestedManyWithoutUserInput
+  subTasks?: Prisma.SubTaskCreateNestedManyWithoutUserInput
+  quickCaptures?: Prisma.QuickCaptureCreateNestedManyWithoutUserInput
+  rewards?: Prisma.RewardCreateNestedManyWithoutUserInput
+  journalEntries?: Prisma.JournalEntryCreateNestedManyWithoutUserInput
+  notificationPreference?: Prisma.NotificationPreferenceCreateNestedOneWithoutUserInput
+  nudgeCaches?: Prisma.NudgeCacheCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutChatMessagesInput = {
+  id?: string
+  name?: string | null
+  email: string
+  emailVerified?: Date | string | null
+  image?: string | null
+  createdAt?: Date | string
+  accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
+  taskCompletions?: Prisma.TaskCompletionUncheckedCreateNestedManyWithoutUserInput
+  dailyActivities?: Prisma.DailyActivityUncheckedCreateNestedManyWithoutUserInput
+  moodEntries?: Prisma.MoodEntryUncheckedCreateNestedManyWithoutUserInput
+  budgetItems?: Prisma.BudgetItemUncheckedCreateNestedManyWithoutUserInput
+  deadlines?: Prisma.DeadlineUncheckedCreateNestedManyWithoutUserInput
+  studySessions?: Prisma.StudySessionUncheckedCreateNestedManyWithoutUserInput
+  subTasks?: Prisma.SubTaskUncheckedCreateNestedManyWithoutUserInput
+  quickCaptures?: Prisma.QuickCaptureUncheckedCreateNestedManyWithoutUserInput
+  rewards?: Prisma.RewardUncheckedCreateNestedManyWithoutUserInput
+  journalEntries?: Prisma.JournalEntryUncheckedCreateNestedManyWithoutUserInput
+  notificationPreference?: Prisma.NotificationPreferenceUncheckedCreateNestedOneWithoutUserInput
+  nudgeCaches?: Prisma.NudgeCacheUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutChatMessagesInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutChatMessagesInput, Prisma.UserUncheckedCreateWithoutChatMessagesInput>
+}
+
+export type UserUpsertWithoutChatMessagesInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutChatMessagesInput, Prisma.UserUncheckedUpdateWithoutChatMessagesInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutChatMessagesInput, Prisma.UserUncheckedCreateWithoutChatMessagesInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutChatMessagesInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutChatMessagesInput, Prisma.UserUncheckedUpdateWithoutChatMessagesInput>
+}
+
+export type UserUpdateWithoutChatMessagesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
+  taskCompletions?: Prisma.TaskCompletionUpdateManyWithoutUserNestedInput
+  dailyActivities?: Prisma.DailyActivityUpdateManyWithoutUserNestedInput
+  moodEntries?: Prisma.MoodEntryUpdateManyWithoutUserNestedInput
+  budgetItems?: Prisma.BudgetItemUpdateManyWithoutUserNestedInput
+  deadlines?: Prisma.DeadlineUpdateManyWithoutUserNestedInput
+  studySessions?: Prisma.StudySessionUpdateManyWithoutUserNestedInput
+  subTasks?: Prisma.SubTaskUpdateManyWithoutUserNestedInput
+  quickCaptures?: Prisma.QuickCaptureUpdateManyWithoutUserNestedInput
+  rewards?: Prisma.RewardUpdateManyWithoutUserNestedInput
+  journalEntries?: Prisma.JournalEntryUpdateManyWithoutUserNestedInput
+  notificationPreference?: Prisma.NotificationPreferenceUpdateOneWithoutUserNestedInput
+  nudgeCaches?: Prisma.NudgeCacheUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutChatMessagesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
+  taskCompletions?: Prisma.TaskCompletionUncheckedUpdateManyWithoutUserNestedInput
+  dailyActivities?: Prisma.DailyActivityUncheckedUpdateManyWithoutUserNestedInput
+  moodEntries?: Prisma.MoodEntryUncheckedUpdateManyWithoutUserNestedInput
+  budgetItems?: Prisma.BudgetItemUncheckedUpdateManyWithoutUserNestedInput
+  deadlines?: Prisma.DeadlineUncheckedUpdateManyWithoutUserNestedInput
+  studySessions?: Prisma.StudySessionUncheckedUpdateManyWithoutUserNestedInput
+  subTasks?: Prisma.SubTaskUncheckedUpdateManyWithoutUserNestedInput
+  quickCaptures?: Prisma.QuickCaptureUncheckedUpdateManyWithoutUserNestedInput
+  rewards?: Prisma.RewardUncheckedUpdateManyWithoutUserNestedInput
+  journalEntries?: Prisma.JournalEntryUncheckedUpdateManyWithoutUserNestedInput
+  notificationPreference?: Prisma.NotificationPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  nudgeCaches?: Prisma.NudgeCacheUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutNudgeCachesInput = {
+  id?: string
+  name?: string | null
+  email: string
+  emailVerified?: Date | string | null
+  image?: string | null
+  createdAt?: Date | string
+  accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
+  taskCompletions?: Prisma.TaskCompletionCreateNestedManyWithoutUserInput
+  dailyActivities?: Prisma.DailyActivityCreateNestedManyWithoutUserInput
+  moodEntries?: Prisma.MoodEntryCreateNestedManyWithoutUserInput
+  budgetItems?: Prisma.BudgetItemCreateNestedManyWithoutUserInput
+  deadlines?: Prisma.DeadlineCreateNestedManyWithoutUserInput
+  studySessions?: Prisma.StudySessionCreateNestedManyWithoutUserInput
+  subTasks?: Prisma.SubTaskCreateNestedManyWithoutUserInput
+  quickCaptures?: Prisma.QuickCaptureCreateNestedManyWithoutUserInput
+  rewards?: Prisma.RewardCreateNestedManyWithoutUserInput
+  journalEntries?: Prisma.JournalEntryCreateNestedManyWithoutUserInput
+  notificationPreference?: Prisma.NotificationPreferenceCreateNestedOneWithoutUserInput
+  chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutNudgeCachesInput = {
+  id?: string
+  name?: string | null
+  email: string
+  emailVerified?: Date | string | null
+  image?: string | null
+  createdAt?: Date | string
+  accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
+  taskCompletions?: Prisma.TaskCompletionUncheckedCreateNestedManyWithoutUserInput
+  dailyActivities?: Prisma.DailyActivityUncheckedCreateNestedManyWithoutUserInput
+  moodEntries?: Prisma.MoodEntryUncheckedCreateNestedManyWithoutUserInput
+  budgetItems?: Prisma.BudgetItemUncheckedCreateNestedManyWithoutUserInput
+  deadlines?: Prisma.DeadlineUncheckedCreateNestedManyWithoutUserInput
+  studySessions?: Prisma.StudySessionUncheckedCreateNestedManyWithoutUserInput
+  subTasks?: Prisma.SubTaskUncheckedCreateNestedManyWithoutUserInput
+  quickCaptures?: Prisma.QuickCaptureUncheckedCreateNestedManyWithoutUserInput
+  rewards?: Prisma.RewardUncheckedCreateNestedManyWithoutUserInput
+  journalEntries?: Prisma.JournalEntryUncheckedCreateNestedManyWithoutUserInput
+  notificationPreference?: Prisma.NotificationPreferenceUncheckedCreateNestedOneWithoutUserInput
+  chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutNudgeCachesInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutNudgeCachesInput, Prisma.UserUncheckedCreateWithoutNudgeCachesInput>
+}
+
+export type UserUpsertWithoutNudgeCachesInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutNudgeCachesInput, Prisma.UserUncheckedUpdateWithoutNudgeCachesInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutNudgeCachesInput, Prisma.UserUncheckedCreateWithoutNudgeCachesInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutNudgeCachesInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutNudgeCachesInput, Prisma.UserUncheckedUpdateWithoutNudgeCachesInput>
+}
+
+export type UserUpdateWithoutNudgeCachesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
+  taskCompletions?: Prisma.TaskCompletionUpdateManyWithoutUserNestedInput
+  dailyActivities?: Prisma.DailyActivityUpdateManyWithoutUserNestedInput
+  moodEntries?: Prisma.MoodEntryUpdateManyWithoutUserNestedInput
+  budgetItems?: Prisma.BudgetItemUpdateManyWithoutUserNestedInput
+  deadlines?: Prisma.DeadlineUpdateManyWithoutUserNestedInput
+  studySessions?: Prisma.StudySessionUpdateManyWithoutUserNestedInput
+  subTasks?: Prisma.SubTaskUpdateManyWithoutUserNestedInput
+  quickCaptures?: Prisma.QuickCaptureUpdateManyWithoutUserNestedInput
+  rewards?: Prisma.RewardUpdateManyWithoutUserNestedInput
+  journalEntries?: Prisma.JournalEntryUpdateManyWithoutUserNestedInput
+  notificationPreference?: Prisma.NotificationPreferenceUpdateOneWithoutUserNestedInput
+  chatMessages?: Prisma.ChatMessageUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutNudgeCachesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
+  taskCompletions?: Prisma.TaskCompletionUncheckedUpdateManyWithoutUserNestedInput
+  dailyActivities?: Prisma.DailyActivityUncheckedUpdateManyWithoutUserNestedInput
+  moodEntries?: Prisma.MoodEntryUncheckedUpdateManyWithoutUserNestedInput
+  budgetItems?: Prisma.BudgetItemUncheckedUpdateManyWithoutUserNestedInput
+  deadlines?: Prisma.DeadlineUncheckedUpdateManyWithoutUserNestedInput
+  studySessions?: Prisma.StudySessionUncheckedUpdateManyWithoutUserNestedInput
+  subTasks?: Prisma.SubTaskUncheckedUpdateManyWithoutUserNestedInput
+  quickCaptures?: Prisma.QuickCaptureUncheckedUpdateManyWithoutUserNestedInput
+  rewards?: Prisma.RewardUncheckedUpdateManyWithoutUserNestedInput
+  journalEntries?: Prisma.JournalEntryUncheckedUpdateManyWithoutUserNestedInput
+  notificationPreference?: Prisma.NotificationPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutUserNestedInput
 }
 
 
@@ -2114,9 +2299,10 @@ export type UserCountOutputType = {
   studySessions: number
   subTasks: number
   quickCaptures: number
+  rewards: number
+  journalEntries: number
   chatMessages: number
   nudgeCaches: number
-  journalEntries: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2130,9 +2316,10 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   studySessions?: boolean | UserCountOutputTypeCountStudySessionsArgs
   subTasks?: boolean | UserCountOutputTypeCountSubTasksArgs
   quickCaptures?: boolean | UserCountOutputTypeCountQuickCapturesArgs
+  rewards?: boolean | UserCountOutputTypeCountRewardsArgs
+  journalEntries?: boolean | UserCountOutputTypeCountJournalEntriesArgs
   chatMessages?: boolean | UserCountOutputTypeCountChatMessagesArgs
   nudgeCaches?: boolean | UserCountOutputTypeCountNudgeCachesArgs
-  journalEntries?: boolean | UserCountOutputTypeCountJournalEntriesArgs
 }
 
 /**
@@ -2218,6 +2405,20 @@ export type UserCountOutputTypeCountQuickCapturesArgs<ExtArgs extends runtime.Ty
 /**
  * UserCountOutputType without action
  */
+export type UserCountOutputTypeCountRewardsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.RewardWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountJournalEntriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.JournalEntryWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
 export type UserCountOutputTypeCountChatMessagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.ChatMessageWhereInput
 }
@@ -2227,13 +2428,6 @@ export type UserCountOutputTypeCountChatMessagesArgs<ExtArgs extends runtime.Typ
  */
 export type UserCountOutputTypeCountNudgeCachesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.NudgeCacheWhereInput
-}
-
-/**
- * UserCountOutputType without action
- */
-export type UserCountOutputTypeCountJournalEntriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.JournalEntryWhereInput
 }
 
 
@@ -2254,10 +2448,11 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   studySessions?: boolean | Prisma.User$studySessionsArgs<ExtArgs>
   subTasks?: boolean | Prisma.User$subTasksArgs<ExtArgs>
   quickCaptures?: boolean | Prisma.User$quickCapturesArgs<ExtArgs>
+  rewards?: boolean | Prisma.User$rewardsArgs<ExtArgs>
+  journalEntries?: boolean | Prisma.User$journalEntriesArgs<ExtArgs>
   notificationPreference?: boolean | Prisma.User$notificationPreferenceArgs<ExtArgs>
   chatMessages?: boolean | Prisma.User$chatMessagesArgs<ExtArgs>
   nudgeCaches?: boolean | Prisma.User$nudgeCachesArgs<ExtArgs>
-  journalEntries?: boolean | Prisma.User$journalEntriesArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -2300,10 +2495,11 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   studySessions?: boolean | Prisma.User$studySessionsArgs<ExtArgs>
   subTasks?: boolean | Prisma.User$subTasksArgs<ExtArgs>
   quickCaptures?: boolean | Prisma.User$quickCapturesArgs<ExtArgs>
+  rewards?: boolean | Prisma.User$rewardsArgs<ExtArgs>
+  journalEntries?: boolean | Prisma.User$journalEntriesArgs<ExtArgs>
   notificationPreference?: boolean | Prisma.User$notificationPreferenceArgs<ExtArgs>
   chatMessages?: boolean | Prisma.User$chatMessagesArgs<ExtArgs>
   nudgeCaches?: boolean | Prisma.User$nudgeCachesArgs<ExtArgs>
-  journalEntries?: boolean | Prisma.User$journalEntriesArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -2322,10 +2518,11 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     studySessions: Prisma.$StudySessionPayload<ExtArgs>[]
     subTasks: Prisma.$SubTaskPayload<ExtArgs>[]
     quickCaptures: Prisma.$QuickCapturePayload<ExtArgs>[]
+    rewards: Prisma.$RewardPayload<ExtArgs>[]
+    journalEntries: Prisma.$JournalEntryPayload<ExtArgs>[]
     notificationPreference: Prisma.$NotificationPreferencePayload<ExtArgs> | null
     chatMessages: Prisma.$ChatMessagePayload<ExtArgs>[]
     nudgeCaches: Prisma.$NudgeCachePayload<ExtArgs>[]
-    journalEntries: Prisma.$JournalEntryPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -2738,10 +2935,11 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   studySessions<T extends Prisma.User$studySessionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$studySessionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$StudySessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   subTasks<T extends Prisma.User$subTasksArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$subTasksArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SubTaskPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   quickCaptures<T extends Prisma.User$quickCapturesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$quickCapturesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$QuickCapturePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  rewards<T extends Prisma.User$rewardsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$rewardsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RewardPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  journalEntries<T extends Prisma.User$journalEntriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$journalEntriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$JournalEntryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   notificationPreference<T extends Prisma.User$notificationPreferenceArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$notificationPreferenceArgs<ExtArgs>>): Prisma.Prisma__NotificationPreferenceClient<runtime.Types.Result.GetResult<Prisma.$NotificationPreferencePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   chatMessages<T extends Prisma.User$chatMessagesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$chatMessagesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ChatMessagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   nudgeCaches<T extends Prisma.User$nudgeCachesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$nudgeCachesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$NudgeCachePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  journalEntries<T extends Prisma.User$journalEntriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$journalEntriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$JournalEntryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3410,6 +3608,54 @@ export type User$quickCapturesArgs<ExtArgs extends runtime.Types.Extensions.Inte
 }
 
 /**
+ * User.rewards
+ */
+export type User$rewardsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Reward
+   */
+  select?: Prisma.RewardSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Reward
+   */
+  omit?: Prisma.RewardOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.RewardInclude<ExtArgs> | null
+  where?: Prisma.RewardWhereInput
+  orderBy?: Prisma.RewardOrderByWithRelationInput | Prisma.RewardOrderByWithRelationInput[]
+  cursor?: Prisma.RewardWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.RewardScalarFieldEnum | Prisma.RewardScalarFieldEnum[]
+}
+
+/**
+ * User.journalEntries
+ */
+export type User$journalEntriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the JournalEntry
+   */
+  select?: Prisma.JournalEntrySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the JournalEntry
+   */
+  omit?: Prisma.JournalEntryOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.JournalEntryInclude<ExtArgs> | null
+  where?: Prisma.JournalEntryWhereInput
+  orderBy?: Prisma.JournalEntryOrderByWithRelationInput | Prisma.JournalEntryOrderByWithRelationInput[]
+  cursor?: Prisma.JournalEntryWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.JournalEntryScalarFieldEnum | Prisma.JournalEntryScalarFieldEnum[]
+}
+
+/**
  * User.notificationPreference
  */
 export type User$notificationPreferenceArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -3474,30 +3720,6 @@ export type User$nudgeCachesArgs<ExtArgs extends runtime.Types.Extensions.Intern
   take?: number
   skip?: number
   distinct?: Prisma.NudgeCacheScalarFieldEnum | Prisma.NudgeCacheScalarFieldEnum[]
-}
-
-/**
- * User.journalEntries
- */
-export type User$journalEntriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the JournalEntry
-   */
-  select?: Prisma.JournalEntrySelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the JournalEntry
-   */
-  omit?: Prisma.JournalEntryOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.JournalEntryInclude<ExtArgs> | null
-  where?: Prisma.JournalEntryWhereInput
-  orderBy?: Prisma.JournalEntryOrderByWithRelationInput | Prisma.JournalEntryOrderByWithRelationInput[]
-  cursor?: Prisma.JournalEntryWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.JournalEntryScalarFieldEnum | Prisma.JournalEntryScalarFieldEnum[]
 }
 
 /**

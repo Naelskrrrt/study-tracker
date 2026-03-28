@@ -63,10 +63,11 @@ export const ModelName = {
   StudySession: 'StudySession',
   SubTask: 'SubTask',
   QuickCapture: 'QuickCapture',
+  Reward: 'Reward',
+  JournalEntry: 'JournalEntry',
   NotificationPreference: 'NotificationPreference',
   ChatMessage: 'ChatMessage',
-  NudgeCache: 'NudgeCache',
-  JournalEntry: 'JournalEntry'
+  NudgeCache: 'NudgeCache'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -201,6 +202,7 @@ export const StudySessionScalarFieldEnum = {
   durationMin: 'durationMin',
   pauseCount: 'pauseCount',
   totalPauseMin: 'totalPauseMin',
+  coinsEarned: 'coinsEarned',
   debrief: 'debrief'
 } as const
 
@@ -229,6 +231,35 @@ export const QuickCaptureScalarFieldEnum = {
 } as const
 
 export type QuickCaptureScalarFieldEnum = (typeof QuickCaptureScalarFieldEnum)[keyof typeof QuickCaptureScalarFieldEnum]
+
+
+export const RewardScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  name: 'name',
+  description: 'description',
+  cost: 'cost',
+  icon: 'icon',
+  redeemed: 'redeemed',
+  redeemedAt: 'redeemedAt',
+  createdAt: 'createdAt'
+} as const
+
+export type RewardScalarFieldEnum = (typeof RewardScalarFieldEnum)[keyof typeof RewardScalarFieldEnum]
+
+
+export const JournalEntryScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  date: 'date',
+  autoData: 'autoData',
+  notes: 'notes',
+  aiSummary: 'aiSummary',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type JournalEntryScalarFieldEnum = (typeof JournalEntryScalarFieldEnum)[keyof typeof JournalEntryScalarFieldEnum]
 
 
 export const NotificationPreferenceScalarFieldEnum = {
@@ -267,23 +298,19 @@ export const NudgeCacheScalarFieldEnum = {
 export type NudgeCacheScalarFieldEnum = (typeof NudgeCacheScalarFieldEnum)[keyof typeof NudgeCacheScalarFieldEnum]
 
 
-export const JournalEntryScalarFieldEnum = {
-  id: 'id',
-  userId: 'userId',
-  date: 'date',
-  aiSummary: 'aiSummary',
-  createdAt: 'createdAt'
-} as const
-
-export type JournalEntryScalarFieldEnum = (typeof JournalEntryScalarFieldEnum)[keyof typeof JournalEntryScalarFieldEnum]
-
-
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
 } as const
 
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+export const JsonNullValueInput = {
+  JsonNull: JsonNull
+} as const
+
+export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
 
 
 export const NullableJsonNullValueInput = {

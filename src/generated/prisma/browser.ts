@@ -78,6 +78,16 @@ export type SubTask = Prisma.SubTaskModel
  */
 export type QuickCapture = Prisma.QuickCaptureModel
 /**
+ * Model Reward
+ * 
+ */
+export type Reward = Prisma.RewardModel
+/**
+ * Model JournalEntry
+ * 
+ */
+export type JournalEntry = Prisma.JournalEntryModel
+/**
  * Model NotificationPreference
  * 
  */
@@ -92,8 +102,3 @@ export type ChatMessage = Prisma.ChatMessageModel
  * 
  */
 export type NudgeCache = Prisma.NudgeCacheModel
-/**
- * Model JournalEntry
- * 
- */
-export type JournalEntry = Prisma.JournalEntryModel

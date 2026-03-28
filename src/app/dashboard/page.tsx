@@ -5,6 +5,7 @@ import { useCallback, useState } from "react";
 import { useProgress } from "@/hooks/useProgress";
 import { useActivity } from "@/hooks/useActivity";
 import { useMood } from "@/hooks/useMood";
+import { useCoins } from "@/hooks/useCoins";
 import XPBar from "@/components/ui/XPBar";
 import StatCard from "@/components/ui/StatCard";
 import StreakCard from "@/components/ui/StreakCard";
@@ -52,7 +53,7 @@ export default function DashboardPage() {
   } = useActivity();
   const { todayLevel, entries: moodEntries, setMood } = useMood();
   const { mode, override } = useMoodMode();
-
+  const { balance: coinBalance } = useCoins();
   const { debriefReady, debriefText, dismissDebrief } = useTimer();
 
   const [confettiActive, setConfettiActive] = useState(false);
@@ -153,6 +154,7 @@ export default function DashboardPage() {
                   <StatCard label="Progression" value={`${pct}%`} color="text-nvidia" />
                   <StatCard label="Certifs" value={`${certifCount}/3`} color="text-amber" />
                   <StatCard label="Jours actifs" value={activities.length} color="text-purple" />
+                  <StatCard label="Coins" value={`🪙 ${coinBalance}`} color="text-amber" />
                 </div>
 
                 <StreakCard streak={streak} activeDates={activeDates} />

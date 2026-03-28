@@ -28,24 +28,31 @@ export type JournalEntryMinAggregateOutputType = {
   id: string | null
   userId: string | null
   date: string | null
+  notes: string | null
   aiSummary: string | null
   createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type JournalEntryMaxAggregateOutputType = {
   id: string | null
   userId: string | null
   date: string | null
+  notes: string | null
   aiSummary: string | null
   createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type JournalEntryCountAggregateOutputType = {
   id: number
   userId: number
   date: number
+  autoData: number
+  notes: number
   aiSummary: number
   createdAt: number
+  updatedAt: number
   _all: number
 }
 
@@ -54,24 +61,31 @@ export type JournalEntryMinAggregateInputType = {
   id?: true
   userId?: true
   date?: true
+  notes?: true
   aiSummary?: true
   createdAt?: true
+  updatedAt?: true
 }
 
 export type JournalEntryMaxAggregateInputType = {
   id?: true
   userId?: true
   date?: true
+  notes?: true
   aiSummary?: true
   createdAt?: true
+  updatedAt?: true
 }
 
 export type JournalEntryCountAggregateInputType = {
   id?: true
   userId?: true
   date?: true
+  autoData?: true
+  notes?: true
   aiSummary?: true
   createdAt?: true
+  updatedAt?: true
   _all?: true
 }
 
@@ -151,8 +165,11 @@ export type JournalEntryGroupByOutputType = {
   id: string
   userId: string
   date: string
+  autoData: runtime.JsonValue
+  notes: string | null
   aiSummary: string | null
   createdAt: Date
+  updatedAt: Date
   _count: JournalEntryCountAggregateOutputType | null
   _min: JournalEntryMinAggregateOutputType | null
   _max: JournalEntryMaxAggregateOutputType | null
@@ -180,8 +197,11 @@ export type JournalEntryWhereInput = {
   id?: Prisma.StringFilter<"JournalEntry"> | string
   userId?: Prisma.StringFilter<"JournalEntry"> | string
   date?: Prisma.StringFilter<"JournalEntry"> | string
+  autoData?: Prisma.JsonFilter<"JournalEntry">
+  notes?: Prisma.StringNullableFilter<"JournalEntry"> | string | null
   aiSummary?: Prisma.StringNullableFilter<"JournalEntry"> | string | null
   createdAt?: Prisma.DateTimeFilter<"JournalEntry"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"JournalEntry"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }
 
@@ -189,8 +209,11 @@ export type JournalEntryOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   date?: Prisma.SortOrder
+  autoData?: Prisma.SortOrder
+  notes?: Prisma.SortOrderInput | Prisma.SortOrder
   aiSummary?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   user?: Prisma.UserOrderByWithRelationInput
 }
 
@@ -202,8 +225,11 @@ export type JournalEntryWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.JournalEntryWhereInput | Prisma.JournalEntryWhereInput[]
   userId?: Prisma.StringFilter<"JournalEntry"> | string
   date?: Prisma.StringFilter<"JournalEntry"> | string
+  autoData?: Prisma.JsonFilter<"JournalEntry">
+  notes?: Prisma.StringNullableFilter<"JournalEntry"> | string | null
   aiSummary?: Prisma.StringNullableFilter<"JournalEntry"> | string | null
   createdAt?: Prisma.DateTimeFilter<"JournalEntry"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"JournalEntry"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }, "id" | "userId_date">
 
@@ -211,8 +237,11 @@ export type JournalEntryOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   date?: Prisma.SortOrder
+  autoData?: Prisma.SortOrder
+  notes?: Prisma.SortOrderInput | Prisma.SortOrder
   aiSummary?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   _count?: Prisma.JournalEntryCountOrderByAggregateInput
   _max?: Prisma.JournalEntryMaxOrderByAggregateInput
   _min?: Prisma.JournalEntryMinOrderByAggregateInput
@@ -225,15 +254,21 @@ export type JournalEntryScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"JournalEntry"> | string
   userId?: Prisma.StringWithAggregatesFilter<"JournalEntry"> | string
   date?: Prisma.StringWithAggregatesFilter<"JournalEntry"> | string
+  autoData?: Prisma.JsonWithAggregatesFilter<"JournalEntry">
+  notes?: Prisma.StringNullableWithAggregatesFilter<"JournalEntry"> | string | null
   aiSummary?: Prisma.StringNullableWithAggregatesFilter<"JournalEntry"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"JournalEntry"> | Date | string
+  updatedAt?: Prisma.DateTimeWithAggregatesFilter<"JournalEntry"> | Date | string
 }
 
 export type JournalEntryCreateInput = {
   id?: string
   date: string
+  autoData: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  notes?: string | null
   aiSummary?: string | null
   createdAt?: Date | string
+  updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutJournalEntriesInput
 }
 
@@ -241,15 +276,21 @@ export type JournalEntryUncheckedCreateInput = {
   id?: string
   userId: string
   date: string
+  autoData: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  notes?: string | null
   aiSummary?: string | null
   createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type JournalEntryUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.StringFieldUpdateOperationsInput | string
+  autoData?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aiSummary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutJournalEntriesNestedInput
 }
 
@@ -257,31 +298,43 @@ export type JournalEntryUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.StringFieldUpdateOperationsInput | string
+  autoData?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aiSummary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type JournalEntryCreateManyInput = {
   id?: string
   userId: string
   date: string
+  autoData: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  notes?: string | null
   aiSummary?: string | null
   createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type JournalEntryUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.StringFieldUpdateOperationsInput | string
+  autoData?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aiSummary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type JournalEntryUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.StringFieldUpdateOperationsInput | string
+  autoData?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aiSummary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type JournalEntryListRelationFilter = {
@@ -303,24 +356,31 @@ export type JournalEntryCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   date?: Prisma.SortOrder
+  autoData?: Prisma.SortOrder
+  notes?: Prisma.SortOrder
   aiSummary?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type JournalEntryMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   date?: Prisma.SortOrder
+  notes?: Prisma.SortOrder
   aiSummary?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type JournalEntryMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   date?: Prisma.SortOrder
+  notes?: Prisma.SortOrder
   aiSummary?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type JournalEntryCreateNestedManyWithoutUserInput = {
@@ -368,15 +428,21 @@ export type JournalEntryUncheckedUpdateManyWithoutUserNestedInput = {
 export type JournalEntryCreateWithoutUserInput = {
   id?: string
   date: string
+  autoData: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  notes?: string | null
   aiSummary?: string | null
   createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type JournalEntryUncheckedCreateWithoutUserInput = {
   id?: string
   date: string
+  autoData: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  notes?: string | null
   aiSummary?: string | null
   createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type JournalEntryCreateOrConnectWithoutUserInput = {
@@ -412,36 +478,51 @@ export type JournalEntryScalarWhereInput = {
   id?: Prisma.StringFilter<"JournalEntry"> | string
   userId?: Prisma.StringFilter<"JournalEntry"> | string
   date?: Prisma.StringFilter<"JournalEntry"> | string
+  autoData?: Prisma.JsonFilter<"JournalEntry">
+  notes?: Prisma.StringNullableFilter<"JournalEntry"> | string | null
   aiSummary?: Prisma.StringNullableFilter<"JournalEntry"> | string | null
   createdAt?: Prisma.DateTimeFilter<"JournalEntry"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"JournalEntry"> | Date | string
 }
 
 export type JournalEntryCreateManyUserInput = {
   id?: string
   date: string
+  autoData: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  notes?: string | null
   aiSummary?: string | null
   createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type JournalEntryUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.StringFieldUpdateOperationsInput | string
+  autoData?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aiSummary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type JournalEntryUncheckedUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.StringFieldUpdateOperationsInput | string
+  autoData?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aiSummary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type JournalEntryUncheckedUpdateManyWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.StringFieldUpdateOperationsInput | string
+  autoData?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aiSummary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
@@ -450,8 +531,11 @@ export type JournalEntrySelect<ExtArgs extends runtime.Types.Extensions.Internal
   id?: boolean
   userId?: boolean
   date?: boolean
+  autoData?: boolean
+  notes?: boolean
   aiSummary?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["journalEntry"]>
 
@@ -459,8 +543,11 @@ export type JournalEntrySelectCreateManyAndReturn<ExtArgs extends runtime.Types.
   id?: boolean
   userId?: boolean
   date?: boolean
+  autoData?: boolean
+  notes?: boolean
   aiSummary?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["journalEntry"]>
 
@@ -468,8 +555,11 @@ export type JournalEntrySelectUpdateManyAndReturn<ExtArgs extends runtime.Types.
   id?: boolean
   userId?: boolean
   date?: boolean
+  autoData?: boolean
+  notes?: boolean
   aiSummary?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["journalEntry"]>
 
@@ -477,11 +567,14 @@ export type JournalEntrySelectScalar = {
   id?: boolean
   userId?: boolean
   date?: boolean
+  autoData?: boolean
+  notes?: boolean
   aiSummary?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
 }
 
-export type JournalEntryOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "date" | "aiSummary" | "createdAt", ExtArgs["result"]["journalEntry"]>
+export type JournalEntryOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "date" | "autoData" | "notes" | "aiSummary" | "createdAt" | "updatedAt", ExtArgs["result"]["journalEntry"]>
 export type JournalEntryInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
@@ -501,8 +594,11 @@ export type $JournalEntryPayload<ExtArgs extends runtime.Types.Extensions.Intern
     id: string
     userId: string
     date: string
+    autoData: runtime.JsonValue
+    notes: string | null
     aiSummary: string | null
     createdAt: Date
+    updatedAt: Date
   }, ExtArgs["result"]["journalEntry"]>
   composites: {}
 }
@@ -930,8 +1026,11 @@ export interface JournalEntryFieldRefs {
   readonly id: Prisma.FieldRef<"JournalEntry", 'String'>
   readonly userId: Prisma.FieldRef<"JournalEntry", 'String'>
   readonly date: Prisma.FieldRef<"JournalEntry", 'String'>
+  readonly autoData: Prisma.FieldRef<"JournalEntry", 'Json'>
+  readonly notes: Prisma.FieldRef<"JournalEntry", 'String'>
   readonly aiSummary: Prisma.FieldRef<"JournalEntry", 'String'>
   readonly createdAt: Prisma.FieldRef<"JournalEntry", 'DateTime'>
+  readonly updatedAt: Prisma.FieldRef<"JournalEntry", 'DateTime'>
 }
     
 

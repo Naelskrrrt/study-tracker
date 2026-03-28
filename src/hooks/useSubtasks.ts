@@ -20,7 +20,7 @@ export function useSubtasks(taskId: string) {
     { revalidateOnFocus: false }
   );
 
-  const subtasks: SubTask[] = data ?? [];
+  const subtasks: SubTask[] = Array.isArray(data) ? data : [];
   const completedCount = subtasks.filter((s) => s.completed).length;
   const totalCount = subtasks.length;
 

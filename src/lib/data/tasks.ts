@@ -1,3 +1,9 @@
+export type Resource = {
+  type: "video" | "doc" | "article" | "exam" | "tool" | "course";
+  name: string;
+  url: string;
+};
+
 export type Task = {
   id: string;
   name: string;
@@ -5,6 +11,7 @@ export type Task = {
   xp: number;
   certif?: boolean;
   subtasks?: string[];
+  resources?: Resource[];
 };
 
 export type Phase = {
@@ -35,12 +42,41 @@ export const PHASES: Phase[] = [
           "Regarder Cours 2 : backpropagation (1h)",
           "Compléter les exercices du Cours 2",
         ],
+        resources: [
+          {
+            type: "course",
+            name: "Deep Learning Specialization — DeepLearning.AI",
+            url: "https://www.deeplearning.ai/courses/deep-learning-specialization/",
+          },
+          {
+            type: "video",
+            name: "But what is a neural network? — 3Blue1Brown",
+            url: "https://www.youtube.com/watch?v=aircAruvnKk",
+          },
+        ],
       },
       {
         id: "t2",
         name: "Fast.ai — Leçons 1 à 4",
         detail: "PyTorch hands-on · Gratuit",
         xp: 60,
+        resources: [
+          {
+            type: "course",
+            name: "Practical Deep Learning for Coders — fast.ai",
+            url: "https://course.fast.ai/",
+          },
+          {
+            type: "doc",
+            name: "PyTorch Tutorials",
+            url: "https://pytorch.org/tutorials/",
+          },
+          {
+            type: "tool",
+            name: "Google Colab — run notebooks for free",
+            url: "https://colab.research.google.com/",
+          },
+        ],
         subtasks: [
           "Regarder Leçon 1 : intro PyTorch (45 min)",
           "Coder le notebook de la Leçon 1",
@@ -71,6 +107,18 @@ export const PHASES: Phase[] = [
         name: "Deep Learning Spec — Cours 5 (Transformers)",
         detail: "Architecture Transformer, BERT, GPT",
         xp: 70,
+        resources: [
+          {
+            type: "video",
+            name: "Attention is All You Need — Illustrated Transformer",
+            url: "https://jalammar.github.io/illustrated-transformer/",
+          },
+          {
+            type: "article",
+            name: "Attention is All You Need (paper — arXiv)",
+            url: "https://arxiv.org/abs/1706.03762",
+          },
+        ],
         subtasks: [
           "Regarder intro : architecture Transformer (1h)",
           "Compléter le lab Transformer from scratch",
@@ -120,6 +168,23 @@ export const PHASES: Phase[] = [
         name: "Hugging Face NLP Course (chap. 1–4)",
         detail: "Tokenizers, fine-tuning, pipelines",
         xp: 60,
+        resources: [
+          {
+            type: "course",
+            name: "Hugging Face NLP Course",
+            url: "https://huggingface.co/learn/nlp-course/chapter1/1",
+          },
+          {
+            type: "doc",
+            name: "Hugging Face Documentation",
+            url: "https://huggingface.co/docs",
+          },
+          {
+            type: "tool",
+            name: "Hugging Face Hub — modèles & datasets",
+            url: "https://huggingface.co/models",
+          },
+        ],
         subtasks: [
           "Lire chapitre 1 : introduction aux Transformers (30 min)",
           "Exécuter les exemples de pipelines du chapitre 1",
@@ -146,6 +211,23 @@ export const PHASES: Phase[] = [
         name: "NVIDIA DLI — Building RAG Agents",
         detail: "Gratuit · RAG, NIM, embeddings",
         xp: 80,
+        resources: [
+          {
+            type: "course",
+            name: "Building RAG Agents with LLMs — NVIDIA DLI",
+            url: "https://learn.nvidia.com/courses/course-detail?course_id=course-v1:DLI+S-FX-15+V1",
+          },
+          {
+            type: "doc",
+            name: "NVIDIA NIM API Reference",
+            url: "https://docs.nvidia.com/nim/",
+          },
+          {
+            type: "video",
+            name: "RAG from Scratch — LangChain YouTube",
+            url: "https://www.youtube.com/watch?v=sVcwVQRHIc8",
+          },
+        ],
         subtasks: [
           "Accéder au cours et lire l'introduction RAG (20 min)",
           "Comprendre les embeddings et la recherche vectorielle (30 min)",
@@ -172,6 +254,23 @@ export const PHASES: Phase[] = [
         name: "Hugging Face — Fine-tuning LoRA/PEFT",
         detail: "Chapitres 7–9 du cours HF",
         xp: 90,
+        resources: [
+          {
+            type: "doc",
+            name: "PEFT Library — Hugging Face",
+            url: "https://huggingface.co/docs/peft/index",
+          },
+          {
+            type: "article",
+            name: "LoRA: Low-Rank Adaptation of Large Language Models (paper)",
+            url: "https://arxiv.org/abs/2106.09685",
+          },
+          {
+            type: "tool",
+            name: "Weights & Biases — experiment tracking",
+            url: "https://wandb.ai/",
+          },
+        ],
         subtasks: [
           "Lire chapitre 7 : techniques de fine-tuning (30 min)",
           "Lire chapitre 8 : introduction à PEFT (30 min)",
@@ -185,6 +284,28 @@ export const PHASES: Phase[] = [
         name: "TensorRT-LLM + Triton Inference Server",
         detail: "Labs NVIDIA NGC cloud",
         xp: 100,
+        resources: [
+          {
+            type: "doc",
+            name: "TensorRT-LLM Documentation",
+            url: "https://nvidia.github.io/TensorRT-LLM/",
+          },
+          {
+            type: "doc",
+            name: "Triton Inference Server Docs",
+            url: "https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/index.html",
+          },
+          {
+            type: "tool",
+            name: "NVIDIA NGC Catalog",
+            url: "https://catalog.ngc.nvidia.com/",
+          },
+          {
+            type: "video",
+            name: "TensorRT-LLM Overview — NVIDIA GTC",
+            url: "https://www.nvidia.com/en-us/on-demand/session/gtcspring23-s51482/",
+          },
+        ],
         subtasks: [
           "Lire la documentation TensorRT-LLM (30 min)",
           "Lab : compiler un modèle avec TensorRT-LLM sur NGC",
@@ -208,12 +329,36 @@ export const PHASES: Phase[] = [
         name: "Lire Exam Blueprint NCA-GENL (PDF)",
         detail: "nvidia.com · Obligatoire en premier",
         xp: 20,
+        resources: [
+          {
+            type: "exam",
+            name: "NCA-GENL Exam Blueprint — NVIDIA",
+            url: "https://www.nvidia.com/en-us/training/certification/",
+          },
+          {
+            type: "doc",
+            name: "NVIDIA Certification Overview",
+            url: "https://www.nvidia.com/en-us/training/",
+          },
+        ],
       },
       {
         id: "t14",
         name: "NVIDIA DLI — Fundamentals of Deep Learning",
         detail: "Payant · 8h · Labs GPU cloud",
         xp: 80,
+        resources: [
+          {
+            type: "course",
+            name: "Fundamentals of Deep Learning — NVIDIA DLI",
+            url: "https://learn.nvidia.com/courses/course-detail?course_id=course-v1:DLI+C-FX-01+V3",
+          },
+          {
+            type: "tool",
+            name: "NVIDIA DLI Learning Portal",
+            url: "https://learn.nvidia.com/",
+          },
+        ],
       },
       {
         id: "t15",
