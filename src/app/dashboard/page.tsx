@@ -12,8 +12,10 @@ import FocusCard from "@/components/ui/FocusCard";
 import MoodTracker from "@/components/ui/MoodTracker";
 import Confetti from "@/components/ui/Confetti";
 import Toast from "@/components/ui/Toast";
+import DebriefToast from "@/components/ui/DebriefToast";
 import AchievePopup from "@/components/ui/AchievePopup";
 import TimerBar from "@/components/ui/TimerBar";
+import { useTimer } from "@/hooks/useTimer";
 import BrainDump from "@/components/ui/BrainDump";
 import { LEVELS } from "@/lib/data/tasks";
 import { useMoodMode } from "@/hooks/useMoodMode";
@@ -50,6 +52,8 @@ export default function DashboardPage() {
   } = useActivity();
   const { todayLevel, entries: moodEntries, setMood } = useMood();
   const { mode, override } = useMoodMode();
+
+  const { debriefReady, debriefText, dismissDebrief } = useTimer();
 
   const [confettiActive, setConfettiActive] = useState(false);
   const [confettiCount, setConfettiCount] = useState(20);
@@ -205,6 +209,11 @@ export default function DashboardPage() {
                 title={achieve.title}
                 subtitle={achieve.subtitle}
                 onClose={() => setAchieve((a) => ({ ...a, visible: false }))}
+              />
+              <DebriefToast
+                debrief={debriefText}
+                visible={debriefReady}
+                onDismiss={dismissDebrief}
               />
             </div>
           </motion.div>

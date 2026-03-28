@@ -20,6 +20,9 @@ type TimerState = {
   taskName: string | null;
   nudgeIntervalMin: number;
   showNudge: boolean;
+  debriefLoading: boolean;
+  debriefReady: boolean;
+  debriefText: string | null;
 };
 
 type TimerActions = {
@@ -30,6 +33,7 @@ type TimerActions = {
   dismissNudge: () => void;
   setNudgeInterval: (min: number) => void;
   linkTask: (taskId: string, taskName: string) => void;
+  dismissDebrief: () => void;
 };
 
 type TimerContextValue = TimerState & TimerActions;
@@ -48,6 +52,9 @@ export function TimerProvider({ children }: { children: React.ReactNode }) {
     taskName: null,
     nudgeIntervalMin: 30,
     showNudge: false,
+    debriefLoading: false,
+    debriefReady: false,
+    debriefText: null,
   });
 
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -186,6 +193,27 @@ export function TimerProvider({ children }: { children: React.ReactNode }) {
       }
     }
 
+    // Fire debrief in background
+    const sessionIdForDebrief = state.sessionId;
+    if (sessionIdForDebrief) {
+      setState((s) => ({ ...s, debriefLoading: true }));
+      fetch(`/api/sessions/${sessionIdForDebrief}/debrief`, {
+        method: "POST",
+      })
+        .then((r) => r.json())
+        .then((data) => {
+          setState((s) => ({
+            ...s,
+            debriefLoading: false,
+            debriefReady: true,
+            debriefText: data.debrief ?? null,
+          }));
+        })
+        .catch(() => {
+          setState((s) => ({ ...s, debriefLoading: false }));
+        });
+    }
+
     const result = { durationMin, pauseCount: state.pauseCount };
     setState((s) => ({
       ...s,
@@ -198,6 +226,7 @@ export function TimerProvider({ children }: { children: React.ReactNode }) {
       taskId: null,
       taskName: null,
       showNudge: false,
+      // Keep debrief state
     }));
 
     return result;
@@ -205,6 +234,14 @@ export function TimerProvider({ children }: { children: React.ReactNode }) {
 
   const dismissNudge = useCallback(() => {
     setState((s) => ({ ...s, showNudge: false }));
+  }, []);
+
+  const dismissDebrief = useCallback(() => {
+    setState((s) => ({
+      ...s,
+      debriefReady: false,
+      debriefText: null,
+    }));
   }, []);
 
   const setNudgeInterval = useCallback((min: number) => {
@@ -227,7 +264,7 @@ export function TimerProvider({ children }: { children: React.ReactNode }) {
 
   return (
     <TimerContext.Provider
-      value={{ ...state, start, pause, resume, stop, dismissNudge, setNudgeInterval, linkTask }}
+      value={{ ...state, start, pause, resume, stop, dismissNudge, setNudgeInterval, linkTask, dismissDebrief }}
     >
       {children}
     </TimerContext.Provider>
