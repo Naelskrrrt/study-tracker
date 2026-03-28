@@ -1,9 +1,18 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
-import type { Task } from "@/lib/data/tasks";
+import { motion, AnimatePresence } from "framer-motion";
+import type { Task, Resource } from "@/lib/data/tasks";
 import SubTaskList from "./SubTaskList";
+
+const RESOURCE_ICONS: Record<Resource["type"], string> = {
+  video: "▶️",
+  doc: "📖",
+  article: "📄",
+  exam: "🎓",
+  tool: "🛠️",
+  course: "🎓",
+};
 
 type Props = {
   task: Task;
@@ -27,6 +36,7 @@ export default function TaskItem({
     : Math.round(task.xp / 3);
   const [showNote, setShowNote] = useState(false);
   const [noteText, setNoteText] = useState(note ?? "");
+  const [showResources, setShowResources] = useState(false);
 
   return (
     <div
@@ -102,6 +112,52 @@ export default function TaskItem({
               xpPerSubtask={xpPerSubtask}
               onSubtaskComplete={onSubtaskComplete}
             />
+          )}
+
+          {task.resources && task.resources.length > 0 && (
+            <div className="mt-2">
+              <button
+                onClick={() => setShowResources(!showResources)}
+                className="flex items-center gap-1 text-xs text-muted hover:text-white transition-colors"
+              >
+                <motion.span
+                  animate={{ rotate: showResources ? 90 : 0 }}
+                  transition={{ duration: 0.2 }}
+                  className="inline-block"
+                >
+                  ▶
+                </motion.span>
+                Ressources ({task.resources.length})
+              </button>
+
+              <AnimatePresence initial={false}>
+                {showResources && (
+                  <motion.div
+                    key="resources"
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.2 }}
+                    className="overflow-hidden"
+                  >
+                    <div className="mt-2 space-y-1">
+                      {task.resources.map((res, i) => (
+                        <a
+                          key={i}
+                          href={res.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 rounded-lg px-2 py-1.5 text-xs text-white/80 hover:bg-surface2 hover:text-white transition-colors"
+                        >
+                          <span className="shrink-0">{RESOURCE_ICONS[res.type]}</span>
+                          <span className="truncate">{res.name}</span>
+                        </a>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           )}
         </div>
       </div>
