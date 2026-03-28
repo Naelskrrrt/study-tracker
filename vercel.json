@@ -8,7 +8,7 @@
     },
     {
       "path": "/api/email/alert",
-      "schedule": "0 */6 * * *"
+      "schedule": "0 18 * * *"
     }
   ]
 }
