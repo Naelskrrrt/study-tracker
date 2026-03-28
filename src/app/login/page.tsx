@@ -57,6 +57,18 @@ export default function LoginPage() {
             </svg>
             Continuer avec Google
           </button>
+
+          <button
+            onClick={() =>
+              signIn("credentials", {
+                email: "dev@nvidia-tracker.local",
+                callbackUrl: "/dashboard",
+              })
+            }
+            className="flex items-center justify-center gap-3 rounded-xl border border-nvidia/30 bg-nvidia/10 px-4 py-3 text-sm font-semibold text-nvidia transition-colors hover:bg-nvidia/20"
+          >
+            Dev Login (local)
+          </button>
         </div>
       </motion.div>
     </div>

@@ -98,7 +98,7 @@ export default function GraphsPage() {
               insight={correlation.insight}
             />
           )}
-          {predictions && (
+          {predictions?.phases && (
             <PredictionBars phases={predictions.phases} />
           )}
           {patterns && (
