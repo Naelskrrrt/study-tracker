@@ -4,7 +4,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 const FROM_EMAIL = "NVIDIA Tracker <onboarding@resend.dev>";
 
-type DigestData = {
+export type DigestData = {
   userName: string;
   tasksCompleted: string[];
   xpEarned: number;
@@ -14,7 +14,11 @@ type DigestData = {
   deadlines: { name: string; daysLeft: number }[];
 };
 
-export async function sendDigestEmail(to: string, data: DigestData) {
+export async function sendDigestEmail(
+  to: string,
+  data: DigestData,
+  aiIntro?: string | null
+) {
   const moodEmoji =
     data.moodAvg !== null
       ? data.moodAvg >= 4
@@ -37,6 +41,7 @@ export async function sendDigestEmail(to: string, data: DigestData) {
     <div style="font-family: sans-serif; max-width: 500px; margin: 0 auto; background: #0a0a0a; color: #ededed; padding: 24px; border-radius: 12px;">
       <h2 style="color: #76b900; margin-top: 0;">Récap du jour</h2>
       <p>Salut ${data.userName} !</p>
+      ${aiIntro ? `<p style="color: #a0d060; font-style: italic; margin: 12px 0;">${aiIntro}</p>` : ""}
       <table style="width: 100%; border-collapse: collapse; margin: 16px 0;">
         <tr>
           <td style="padding: 8px; border-bottom: 1px solid #2a2a4a;">Tâches</td>
@@ -70,6 +75,46 @@ export async function sendDigestEmail(to: string, data: DigestData) {
     subject: `Récap: ${data.tasksCompleted.length} tâche${data.tasksCompleted.length !== 1 ? "s" : ""} | +${data.xpEarned} XP | Streak ${data.streak}j`,
     html,
   });
+}
+
+export async function generateDigestContent(
+  data: DigestData
+): Promise<string | null> {
+  try {
+    // Dynamic import to avoid loading AI SDK at module level for non-AI email paths
+    const { generateText } = await import("ai");
+    const { geminiFlash } = await import("@/lib/ai");
+
+    const hours = Math.round((data.studyTimeMin / 60) * 10) / 10;
+    const deadlineInfo =
+      data.deadlines.length > 0
+        ? data.deadlines
+            .map((d) => `${d.name} dans ${d.daysLeft} jours`)
+            .join(", ")
+        : "aucune deadline proche";
+
+    const prompt = `Tu es un coach TDAH. Ecris un paragraphe personnalise de 2-3 phrases pour l'email recap quotidien d'un etudiant.
+
+Donnees du jour :
+- Prenom : ${data.userName}
+- Taches completees : ${data.tasksCompleted.length} (${data.tasksCompleted.join(", ") || "aucune"})
+- XP gagnes : ${data.xpEarned}
+- Temps d'etude : ${hours}h
+- Streak : ${data.streak} jours
+- Humeur moyenne : ${data.moodAvg !== null ? `${data.moodAvg.toFixed(1)}/5` : "non enregistree"}
+- Deadlines : ${deadlineInfo}
+
+Sois motivant, specifique et concis. Ecris en francais.`;
+
+    const { text } = await generateText({
+      model: geminiFlash,
+      prompt,
+    });
+
+    return text;
+  } catch {
+    return null;
+  }
 }
 
 type AlertData = {

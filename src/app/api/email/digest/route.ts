@@ -1,5 +1,5 @@
 import { prisma } from "@/lib/prisma";
-import { sendDigestEmail } from "@/lib/email";
+import { sendDigestEmail, generateDigestContent } from "@/lib/email";
 import { todayString } from "@/lib/utils/dates";
 
 export async function POST(req: Request) {
@@ -113,7 +113,8 @@ export async function POST(req: Request) {
         .filter((dl) => dl.daysLeft > 0 && dl.daysLeft <= 30)
         .sort((a, b) => a.daysLeft - b.daysLeft);
 
-      await sendDigestEmail(pref.user.email, {
+      // Generate AI-powered intro (falls back gracefully)
+      const aiContent = await generateDigestContent({
         userName: pref.user.name ?? "toi",
         tasksCompleted: activity?.taskNames ?? [],
         xpEarned: activity?.xpEarned ?? 0,
@@ -122,6 +123,20 @@ export async function POST(req: Request) {
         moodAvg,
         deadlines: upcomingDeadlines,
       });
+
+      await sendDigestEmail(
+        pref.user.email,
+        {
+          userName: pref.user.name ?? "toi",
+          tasksCompleted: activity?.taskNames ?? [],
+          xpEarned: activity?.xpEarned ?? 0,
+          studyTimeMin,
+          streak,
+          moodAvg,
+          deadlines: upcomingDeadlines,
+        },
+        aiContent
+      );
 
       sent++;
     } catch {
