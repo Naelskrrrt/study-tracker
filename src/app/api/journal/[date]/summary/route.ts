@@ -84,7 +84,7 @@ Ecris en francais. Sois concis et encourageant.`;
   // Upsert journal entry
   await prisma.journalEntry.upsert({
     where: { userId_date: { userId, date } },
-    create: { userId, date, aiSummary: text },
+    create: { userId, date, aiSummary: text, autoData: {} },
     update: { aiSummary: text },
   });
 
