@@ -63,7 +63,10 @@ export const ModelName = {
   StudySession: 'StudySession',
   SubTask: 'SubTask',
   QuickCapture: 'QuickCapture',
-  NotificationPreference: 'NotificationPreference'
+  NotificationPreference: 'NotificationPreference',
+  ChatMessage: 'ChatMessage',
+  NudgeCache: 'NudgeCache',
+  JournalEntry: 'JournalEntry'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -197,7 +200,8 @@ export const StudySessionScalarFieldEnum = {
   endedAt: 'endedAt',
   durationMin: 'durationMin',
   pauseCount: 'pauseCount',
-  totalPauseMin: 'totalPauseMin'
+  totalPauseMin: 'totalPauseMin',
+  debrief: 'debrief'
 } as const
 
 export type StudySessionScalarFieldEnum = (typeof StudySessionScalarFieldEnum)[keyof typeof StudySessionScalarFieldEnum]
@@ -238,6 +242,40 @@ export const NotificationPreferenceScalarFieldEnum = {
 } as const
 
 export type NotificationPreferenceScalarFieldEnum = (typeof NotificationPreferenceScalarFieldEnum)[keyof typeof NotificationPreferenceScalarFieldEnum]
+
+
+export const ChatMessageScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  role: 'role',
+  content: 'content',
+  createdAt: 'createdAt'
+} as const
+
+export type ChatMessageScalarFieldEnum = (typeof ChatMessageScalarFieldEnum)[keyof typeof ChatMessageScalarFieldEnum]
+
+
+export const NudgeCacheScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  trigger: 'trigger',
+  date: 'date',
+  message: 'message',
+  createdAt: 'createdAt'
+} as const
+
+export type NudgeCacheScalarFieldEnum = (typeof NudgeCacheScalarFieldEnum)[keyof typeof NudgeCacheScalarFieldEnum]
+
+
+export const JournalEntryScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  date: 'date',
+  aiSummary: 'aiSummary',
+  createdAt: 'createdAt'
+} as const
+
+export type JournalEntryScalarFieldEnum = (typeof JournalEntryScalarFieldEnum)[keyof typeof JournalEntryScalarFieldEnum]
 
 
 export const SortOrder = {

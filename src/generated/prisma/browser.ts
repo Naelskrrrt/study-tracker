@@ -82,3 +82,18 @@ export type QuickCapture = Prisma.QuickCaptureModel
  * 
  */
 export type NotificationPreference = Prisma.NotificationPreferenceModel
+/**
+ * Model ChatMessage
+ * 
+ */
+export type ChatMessage = Prisma.ChatMessageModel
+/**
+ * Model NudgeCache
+ * 
+ */
+export type NudgeCache = Prisma.NudgeCacheModel
+/**
+ * Model JournalEntry
+ * 
+ */
+export type JournalEntry = Prisma.JournalEntryModel
