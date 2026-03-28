@@ -19,6 +19,8 @@ import { LEVELS } from "@/lib/data/tasks";
 import { useMoodMode } from "@/hooks/useMoodMode";
 import ZenDashboard from "@/components/ui/ZenDashboard";
 import { AnimatePresence, motion } from "framer-motion";
+import NotificationBanner from "@/components/ui/NotificationBanner";
+import { useNotificationAlerts } from "@/hooks/useNotifications";
 
 const ContribGraph = dynamic(() => import("@/components/ui/ContribGraph"), {
   ssr: false,
@@ -95,6 +97,12 @@ export default function DashboardPage() {
 
   const activeDates = new Set(activities.map((a) => a.date));
 
+  const alerts = useNotificationAlerts({
+    streak,
+    activeDates,
+    deadlines: [], // Will be populated when useDeadlines hook is available
+  });
+
   if (isLoading) {
     return (
       <div className="flex h-64 items-center justify-center">
@@ -106,6 +114,7 @@ export default function DashboardPage() {
   return (
     <>
       <TimerBar />
+      <NotificationBanner alerts={alerts} />
       <AnimatePresence mode="wait">
         {mode === "zen" && todayLevel !== null && (todayLevel === 1 || todayLevel === 2) ? (
           <motion.div
