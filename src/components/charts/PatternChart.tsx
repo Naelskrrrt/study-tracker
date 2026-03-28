@@ -42,7 +42,7 @@ export default function PatternChart({ days, insight }: Props) {
               borderRadius: 8,
               fontSize: 12,
             }}
-            formatter={(value: number) => [`${value} XP`, "XP moyen"]}
+            formatter={(value: unknown) => [`${Number(value)} XP`, "XP moyen"]}
           />
           <Bar dataKey="avgXP" fill="#f472b6" radius={[4, 4, 0, 0]} />
         </BarChart>

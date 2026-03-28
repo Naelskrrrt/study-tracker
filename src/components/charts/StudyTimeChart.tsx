@@ -56,25 +56,27 @@ export default function StudyTimeChart({ weeks, totalHours }: Props) {
               borderRadius: 8,
               fontSize: 12,
             }}
-            formatter={(value: number, name: string) => {
+            formatter={(value: unknown, name: unknown) => {
               const labels: Record<string, string> = {
                 green: "Phase 1",
                 purple: "Phase 2",
                 amber: "Phase 3",
                 other: "Autre",
               };
-              return [`${value}h`, labels[name] ?? name];
+              const n = String(name);
+              return [`${Number(value)}h`, labels[n] ?? n];
             }}
           />
           <Legend
-            formatter={(value: string) => {
+            formatter={(value: unknown) => {
               const labels: Record<string, string> = {
                 green: "P1",
                 purple: "P2",
                 amber: "P3",
                 other: "Autre",
               };
-              return labels[value] ?? value;
+              const v = String(value);
+              return labels[v] ?? v;
             }}
             wrapperStyle={{ fontSize: 10 }}
           />
