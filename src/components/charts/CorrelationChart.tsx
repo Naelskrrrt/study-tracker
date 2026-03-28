@@ -24,9 +24,11 @@ export default function CorrelationChart({ points, insight }: Props) {
             tickFormatter={(v: number) => EMOJI_MAP[v] ?? String(v)} tick={{ fontSize: 14 }} name="Mood" />
           <YAxis dataKey="xp" type="number" tick={{ fill: "#7070a0", fontSize: 10 }} name="XP" />
           <Tooltip contentStyle={{ background: "#13132a", border: "1px solid #2a2a4a", borderRadius: 8, fontSize: 12 }}
-            formatter={(value: number, name: string) => [
-              name === "Mood" ? `${EMOJI_MAP[value] ?? value} (${value}/5)` : `${value} XP`, name,
-            ]} />
+            formatter={(value: unknown, name: unknown) => {
+              const v = Number(value);
+              const n = String(name);
+              return [n === "Mood" ? `${EMOJI_MAP[v] ?? v} (${v}/5)` : `${v} XP`, n];
+            }} />
           <Scatter data={points} fill="#76b900" fillOpacity={0.7} />
         </ScatterChart>
       </ResponsiveContainer>
