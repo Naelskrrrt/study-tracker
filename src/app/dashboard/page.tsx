@@ -16,6 +16,9 @@ import AchievePopup from "@/components/ui/AchievePopup";
 import TimerBar from "@/components/ui/TimerBar";
 import BrainDump from "@/components/ui/BrainDump";
 import { LEVELS } from "@/lib/data/tasks";
+import { useMoodMode } from "@/hooks/useMoodMode";
+import ZenDashboard from "@/components/ui/ZenDashboard";
+import { AnimatePresence, motion } from "framer-motion";
 
 const ContribGraph = dynamic(() => import("@/components/ui/ContribGraph"), {
   ssr: false,
@@ -44,6 +47,7 @@ export default function DashboardPage() {
     activityMap,
   } = useActivity();
   const { todayLevel, entries: moodEntries, setMood } = useMood();
+  const { mode, override } = useMoodMode();
 
   const [confettiActive, setConfettiActive] = useState(false);
   const [confettiCount, setConfettiCount] = useState(20);
@@ -101,76 +105,102 @@ export default function DashboardPage() {
 
   return (
     <>
-    <TimerBar />
-    <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-      {/* Bloc gauche — contenu principal */}
-      <div className="space-y-4">
-        <XPBar totalXP={totalXP} currentLevel={currentLevel} />
+      <TimerBar />
+      <AnimatePresence mode="wait">
+        {mode === "zen" && todayLevel !== null && (todayLevel === 1 || todayLevel === 2) ? (
+          <motion.div
+            key="zen"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <ZenDashboard
+              moodLevel={todayLevel as 1 | 2}
+              streak={streak}
+              onOverride={override}
+            />
+          </motion.div>
+        ) : (
+          <motion.div
+            key="dashboard"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+              {/* Bloc gauche — contenu principal */}
+              <div className="space-y-4">
+                <XPBar totalXP={totalXP} currentLevel={currentLevel} />
 
-        <div className="grid grid-cols-2 gap-3">
-          <StatCard label="Tâches" value={`${doneCount}/${totalCount}`} color="text-white" />
-          <StatCard label="Progression" value={`${pct}%`} color="text-nvidia" />
-          <StatCard label="Certifs" value={`${certifCount}/3`} color="text-amber" />
-          <StatCard label="Jours actifs" value={activities.length} color="text-purple" />
-        </div>
+                <div className="grid grid-cols-2 gap-3">
+                  <StatCard label="Tâches" value={`${doneCount}/${totalCount}`} color="text-white" />
+                  <StatCard label="Progression" value={`${pct}%`} color="text-nvidia" />
+                  <StatCard label="Certifs" value={`${certifCount}/3`} color="text-amber" />
+                  <StatCard label="Jours actifs" value={activities.length} color="text-purple" />
+                </div>
 
-        <StreakCard streak={streak} activeDates={activeDates} />
+                <StreakCard streak={streak} activeDates={activeDates} />
 
-        <MoodTracker
-          todayLevel={todayLevel}
-          entries={moodEntries.map((e) => ({
-            date: e.date,
-            moodLevel: e.moodLevel,
-          }))}
-          onSetMood={setMood}
-        />
+                <MoodTracker
+                  todayLevel={todayLevel}
+                  entries={moodEntries.map((e) => ({
+                    date: e.date,
+                    moodLevel: e.moodLevel,
+                  }))}
+                  onSetMood={setMood}
+                />
 
-        <FocusCard completedIds={completedIds} onComplete={handleComplete} />
+                <FocusCard completedIds={completedIds} onComplete={handleComplete} />
 
-        <BrainDump />
-      </div>
+                <BrainDump />
+              </div>
 
-      {/* Bloc droite — activité */}
-      <div className="space-y-4">
-        <div className="rounded-2xl border border-border bg-surface p-4">
-          <ContribGraph activityMap={activityMap} />
-        </div>
+              {/* Bloc droite — activité */}
+              <div className="space-y-4">
+                <div className="rounded-2xl border border-border bg-surface p-4">
+                  <ContribGraph activityMap={activityMap} />
+                </div>
 
-        <div className="grid grid-cols-2 gap-3">
-          <StatCard label="Streak max" value={`${maxStreak}j`} color="text-coral" />
-          <StatCard label="Total jours" value={totalDays} color="text-nvidia" />
-          <StatCard label="Cette semaine" value={thisWeekCount} color="text-purple" />
-          <StatCard
-            label="Meilleur jour"
-            value={bestDay ? `${bestDay.xpEarned} XP` : "—"}
-            color="text-amber"
-          />
-        </div>
+                <div className="grid grid-cols-2 gap-3">
+                  <StatCard label="Streak max" value={`${maxStreak}j`} color="text-coral" />
+                  <StatCard label="Total jours" value={totalDays} color="text-nvidia" />
+                  <StatCard label="Cette semaine" value={thisWeekCount} color="text-purple" />
+                  <StatCard
+                    label="Meilleur jour"
+                    value={bestDay ? `${bestDay.xpEarned} XP` : "—"}
+                    color="text-amber"
+                  />
+                </div>
 
-        <div className="rounded-2xl border border-border bg-surface p-4">
-          <p className="mb-1 text-xs font-semibold text-muted">
-            🔥 Streak actuelle
-          </p>
-          <p className="font-mono text-2xl font-bold text-coral">
-            {streak} jour{streak !== 1 ? "s" : ""}
-          </p>
-        </div>
-      </div>
+                <div className="rounded-2xl border border-border bg-surface p-4">
+                  <p className="mb-1 text-xs font-semibold text-muted">
+                    🔥 Streak actuelle
+                  </p>
+                  <p className="font-mono text-2xl font-bold text-coral">
+                    {streak} jour{streak !== 1 ? "s" : ""}
+                  </p>
+                </div>
+              </div>
 
-      {/* Overlays */}
-      <Confetti active={confettiActive} count={confettiCount} />
-      <Toast
-        message={toast.message}
-        visible={toast.visible}
-        onClose={() => setToast((t) => ({ ...t, visible: false }))}
-      />
-      <AchievePopup
-        visible={achieve.visible}
-        title={achieve.title}
-        subtitle={achieve.subtitle}
-        onClose={() => setAchieve((a) => ({ ...a, visible: false }))}
-      />
-    </div>
+              {/* Overlays */}
+              <Confetti active={confettiActive} count={confettiCount} />
+              <Toast
+                message={toast.message}
+                visible={toast.visible}
+                onClose={() => setToast((t) => ({ ...t, visible: false }))}
+              />
+              <AchievePopup
+                visible={achieve.visible}
+                title={achieve.title}
+                subtitle={achieve.subtitle}
+                onClose={() => setAchieve((a) => ({ ...a, visible: false }))}
+              />
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }
