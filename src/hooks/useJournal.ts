@@ -31,7 +31,7 @@ export function useJournal(limit = 14) {
     { revalidateOnFocus: false }
   );
 
-  const entries = data ?? [];
+  const entries = Array.isArray(data) ? data : [];
 
   const updateNotes = async (date: string, notes: string) => {
     mutate(

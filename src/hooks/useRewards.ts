@@ -22,7 +22,7 @@ export function useRewards() {
     { revalidateOnFocus: false }
   );
 
-  const rewards = data ?? [];
+  const rewards = Array.isArray(data) ? data : [];
   const available = rewards.filter((r) => !r.redeemed);
   const redeemed = rewards.filter((r) => r.redeemed);
 
