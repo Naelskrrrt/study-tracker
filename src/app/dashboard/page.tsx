@@ -104,7 +104,8 @@ export default function DashboardPage() {
   const alerts = useNotificationAlerts({
     streak,
     activeDates,
-    deadlines: [], // Will be populated when useDeadlines hook is available
+    deadlines: [],
+    todayMood: todayLevel,
   });
 
   if (isLoading) {
