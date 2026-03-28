@@ -27,6 +27,7 @@ model User {
   studySessions   StudySession[]
   subTasks        SubTask[]
   quickCaptures   QuickCapture[]
+  notificationPreference NotificationPreference?
 }
 
 model Account {
@@ -155,4 +156,17 @@ model QuickCapture {
   createdAt DateTime @default(now())
   archived  Boolean  @default(false)
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// ── Wave 3: Intelligence ──
+
+model NotificationPreference {
+  id               String  @id @default(cuid())
+  userId           String  @unique
+  emailDigest      Boolean @default(true)
+  emailAlerts      Boolean @default(true)
+  digestTime       String  @default("20:00")
+  pushEnabled      Boolean @default(false)
+  pushSubscription Json?
+  user             User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
